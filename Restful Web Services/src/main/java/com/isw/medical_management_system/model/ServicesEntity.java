@@ -21,5 +21,8 @@ public class ServicesEntity {
     private int servicesID;
     private String servicesName;
     private float amount;
+    //For improve performance/ load element if we need it!!!
+    @ManyToOne(fetch = FetchType.LAZY)
+    private BillEntity billEntity;
 
 }
