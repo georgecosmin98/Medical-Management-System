@@ -6,7 +6,8 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import javax.transaction.Transactional;
-import java.awt.*;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -20,6 +21,12 @@ public class ServicesService {
         return servicesEntity;
     }
 
+    public List<ServicesEntity> findAll() {
+        return servicesRepository.findAll();
+    }
 
+    public Optional<ServicesEntity> findById(int id) {
+        return servicesRepository.findById(String.valueOf(id));
+    }
 }
 

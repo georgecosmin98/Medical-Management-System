@@ -22,6 +22,7 @@ public class ServicesController {
     }
 
     @GetMapping("/listOfServices")
+    @ResponseStatus(HttpStatus.OK)
     public List<ServicesEntity> getServices() {
         return servicesRepository.findAll();
     }

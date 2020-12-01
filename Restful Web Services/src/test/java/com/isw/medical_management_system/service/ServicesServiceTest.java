@@ -9,8 +9,11 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import java.util.List;
+import java.util.LinkedList;
+import java.util.Optional;
+
+import static org.mockito.Mockito.*;
 
 public class ServicesServiceTest {
 
@@ -21,15 +24,44 @@ public class ServicesServiceTest {
     ServicesService servicesService;
 
     @Before
-    public void init(){
+    public void init() {
         MockitoAnnotations.initMocks(this);
     }
 
     @Test
-    public void shouldReturnCorrectCreateServices(){
-        ServicesEntity servicesEntity = new ServicesEntity(1,"Testing",200);
+    public void shouldReturnCorrectCreateServices() {
+        ServicesEntity servicesEntity = new ServicesEntity(1, "Testing", 200);
         servicesService.addServices(servicesEntity);
-        verify(servicesRepository,times(1)).save(servicesEntity);
+        verify(servicesRepository, times(1)).save(servicesEntity);
     }
 
+    @Test
+    public void shouldReturnAllServices() {
+        List services = new LinkedList();
+        services.add(new ServicesEntity(1, "Testing", 200));
+        services.add(new ServicesEntity(2, "Testing", 200));
+
+        //Return all mocked result set on find
+        when(servicesRepository.findAll()).thenReturn(services);
+
+        //Call the main method you want to test
+        List result = servicesService.findAll();
+
+        //Verify if the method was called
+        verify(servicesRepository).findAll();
+    }
+
+    @Test
+    public void shoulReturnCorrectServicesById() {
+        ServicesEntity servicesEntity = new ServicesEntity(1, "Testing", 200);
+
+        //Return all mocked result set on find
+        when(servicesRepository.findById("1")).thenReturn(java.util.Optional.of(servicesEntity));
+
+        //Call the main method you want to test
+        Optional<ServicesEntity> result = servicesService.findById(1);
+
+        //Verify if the method was called
+        verify(servicesRepository).findById("1");
+    }
 }
