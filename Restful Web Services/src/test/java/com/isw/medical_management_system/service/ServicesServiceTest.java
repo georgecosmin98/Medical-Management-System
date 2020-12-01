@@ -2,15 +2,15 @@ package com.isw.medical_management_system.service;
 
 import com.isw.medical_management_system.model.ServicesEntity;
 import com.isw.medical_management_system.repository.ServicesRepository;
-
-import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.mockito.junit.MockitoJUnit;
+import org.mockito.junit.MockitoRule;
 
-import java.util.List;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Optional;
 
 import static org.mockito.Mockito.*;
@@ -23,10 +23,8 @@ public class ServicesServiceTest {
     @InjectMocks
     ServicesService servicesService;
 
-    @Before
-    public void init() {
-        MockitoAnnotations.initMocks(this);
-    }
+    @Rule
+    public MockitoRule rule = MockitoJUnit.rule();
 
     @Test
     public void shouldReturnCorrectCreateServices() {
