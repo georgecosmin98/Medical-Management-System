@@ -29,5 +29,5 @@ public class BillController {
 
     @DeleteMapping("/deleteBill/{id}")
     public void deleteBill(@PathVariable String id) {
-        billRepository.deleteById(id); }
+        billService.deleteById(id); }
 }

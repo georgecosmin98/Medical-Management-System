@@ -11,7 +11,6 @@ import java.util.List;
 
 @Service
 @Transactional
-
 public class PatientService {
 
     @Resource
@@ -25,4 +24,5 @@ public class PatientService {
     public List<PatientEntity> findAll() {
         return patientRepository.findAll();
     }
+
 }

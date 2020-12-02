@@ -23,4 +23,8 @@ public class BillService {
     public List <BillEntity> findAll(){
         return billRepository.findAll();
     }
+
+    public void deleteById(String id){
+        billRepository.deleteById(id);
+    }
 }
