@@ -1,9 +1,7 @@
 package com.isw.medical_management_system.controller;
 
 import com.isw.medical_management_system.model.BillEntity;
-import com.isw.medical_management_system.model.ServicesEntity;
 import com.isw.medical_management_system.repository.BillRepository;
-import com.isw.medical_management_system.repository.ServicesRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 

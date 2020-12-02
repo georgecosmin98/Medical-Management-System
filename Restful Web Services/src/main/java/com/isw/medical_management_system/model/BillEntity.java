@@ -22,7 +22,6 @@ public class BillEntity {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private int billID;
-    //FetchType.LAZY
     @OneToMany(cascade={CascadeType.ALL})
     @Fetch(FetchMode.JOIN)
     private List<ServicesEntity> services;
