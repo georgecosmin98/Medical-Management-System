@@ -39,4 +39,16 @@ public class BillServiceTest {
         billService.addBill(billEntity);
         verify(billRepository,times(1)).save(billEntity);
     }
+
+    @Test
+    public void shouldDeleteBillCorrectly()
+    {
+        ServicesEntity servicesEntity = new ServicesEntity("1", "Testing", 50);
+        List services = new ArrayList();
+        services.add(servicesEntity);
+        BillEntity billEntity = new BillEntity("1",services,new Date(2020,12,02));
+
+        billService.deleteById("1");
+        verify(billRepository,times(1)).deleteById(billEntity.getBillID());
+    }
 }
