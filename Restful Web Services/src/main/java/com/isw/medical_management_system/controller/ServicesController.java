@@ -2,6 +2,7 @@ package com.isw.medical_management_system.controller;
 
 import com.isw.medical_management_system.model.ServicesEntity;
 import com.isw.medical_management_system.repository.ServicesRepository;
+import com.isw.medical_management_system.service.ServicesService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,17 +14,17 @@ import java.util.List;
 public class ServicesController {
 
     @Resource
-    private ServicesRepository servicesRepository;
+    private ServicesService servicesService;
 
     @PostMapping("/addServices")
     @ResponseStatus(HttpStatus.CREATED)
     public ServicesEntity addServices(@RequestBody ServicesEntity servicesEntity){
-        return servicesRepository.save(servicesEntity);
+        return servicesService.addServices(servicesEntity);
     }
 
     @GetMapping("/listOfServices")
     @ResponseStatus(HttpStatus.OK)
     public List<ServicesEntity> getServices() {
-        return servicesRepository.findAll();
+        return servicesService.findAll();
     }
 }

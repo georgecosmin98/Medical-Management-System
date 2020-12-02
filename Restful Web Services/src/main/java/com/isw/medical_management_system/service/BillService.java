@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 @Transactional
@@ -14,9 +15,12 @@ public class BillService {
     @Resource
     private BillRepository billRepository;
 
-    public BillRepository addBill(BillEntity billEntity) {
+    public BillEntity addBill(BillEntity billEntity) {
         billRepository.save(billEntity);
-        return billRepository;
+        return billEntity;
     }
 
+    public List <BillEntity> findAll(){
+        return billRepository.findAll();
+    }
 }

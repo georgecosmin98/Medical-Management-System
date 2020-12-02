@@ -2,6 +2,7 @@ package com.isw.medical_management_system.controller;
 
 import com.isw.medical_management_system.model.BillEntity;
 import com.isw.medical_management_system.repository.BillRepository;
+import com.isw.medical_management_system.service.BillService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,16 +14,16 @@ import java.util.List;
 public class BillController {
 
     @Resource
-    private BillRepository billRepository;
+    private BillService billService;
 
     @PostMapping("/addBill")
     @ResponseStatus(HttpStatus.CREATED)
     public BillEntity addBill(@RequestBody BillEntity billEntity){
-        return billRepository.save(billEntity);
+        return billService.addBill(billEntity);
     }
 
     @GetMapping("/listOfBills")
     public List<BillEntity> getBills() {
-        return billRepository.findAll();
+        return billService.findAll();
     }
 }
