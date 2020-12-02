@@ -9,7 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="t_patient")
+@Table(name="t_doctor")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
