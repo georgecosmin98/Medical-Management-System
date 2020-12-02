@@ -31,10 +31,10 @@ public class BillServiceTest {
 
     @Test
     public void shouldReturnCorrectCreateBill(){
-        ServicesEntity servicesEntity = new ServicesEntity(1, "Testing", 200);
+        ServicesEntity servicesEntity = new ServicesEntity("1", "Testing", 200);
         List services = new ArrayList();
         services.add(servicesEntity);
-        BillEntity billEntity = new BillEntity(1,services,new Date(2020,12,07));
+        BillEntity billEntity = new BillEntity("1",services,new Date(2020,12,07));
 
         billService.addBill(billEntity);
         verify(billRepository,times(1)).save(billEntity);

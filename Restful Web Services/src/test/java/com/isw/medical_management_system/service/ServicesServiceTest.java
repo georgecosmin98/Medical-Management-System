@@ -28,7 +28,7 @@ public class ServicesServiceTest {
 
     @Test
     public void shouldReturnCorrectCreateServices() {
-        ServicesEntity servicesEntity = new ServicesEntity(1, "Testing", 200);
+        ServicesEntity servicesEntity = new ServicesEntity("1", "Testing", 200);
         servicesService.addServices(servicesEntity);
         verify(servicesRepository, times(1)).save(servicesEntity);
     }
@@ -36,8 +36,8 @@ public class ServicesServiceTest {
     @Test
     public void shouldReturnAllServices() {
         List services = new LinkedList();
-        services.add(new ServicesEntity(1, "Testing", 200));
-        services.add(new ServicesEntity(2, "Testing", 200));
+        services.add(new ServicesEntity("1", "Testing", 200));
+        services.add(new ServicesEntity("2", "Testing", 200));
 
         //Return all mocked result set on find
         when(servicesRepository.findAll()).thenReturn(services);
@@ -51,7 +51,7 @@ public class ServicesServiceTest {
 
     @Test
     public void shoulReturnCorrectServicesById() {
-        ServicesEntity servicesEntity = new ServicesEntity(1, "Testing", 200);
+        ServicesEntity servicesEntity = new ServicesEntity("1", "Testing", 200);
 
         //Return all mocked result set on find
         when(servicesRepository.findById("1")).thenReturn(java.util.Optional.of(servicesEntity));
