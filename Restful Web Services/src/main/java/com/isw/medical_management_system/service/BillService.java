@@ -19,4 +19,9 @@ public class BillService {
         return billRepository;
     }
 
+    public BillRepository deleteBill(String id)
+    {
+        billRepository.deleteById(id);
+        return billRepository;
+    }
 }

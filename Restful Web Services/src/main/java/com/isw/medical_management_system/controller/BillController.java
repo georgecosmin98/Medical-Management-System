@@ -25,4 +25,8 @@ public class BillController {
     public List<BillEntity> getBills() {
         return billRepository.findAll();
     }
+
+    @DeleteMapping("/deleteBill/{id}")
+    public void deleteBill(@PathVariable String id) {
+        billRepository.deleteById(id); }
 }
