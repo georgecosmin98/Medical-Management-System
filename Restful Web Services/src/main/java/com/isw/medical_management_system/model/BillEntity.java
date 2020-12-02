@@ -21,7 +21,7 @@ public class BillEntity {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private int billID;
+    private String billID;
     @OneToMany(cascade={CascadeType.ALL})
     @Fetch(FetchMode.JOIN)
     private List<ServicesEntity> services;
