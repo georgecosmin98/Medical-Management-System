@@ -17,8 +17,8 @@ import javax.persistence.Table;
 
 public class PatientEntity extends PersonEntity {
 
-    private String adress;
+    private String address;
     private int age;
-    private String Sex;
+    private String sex;
 
 }
