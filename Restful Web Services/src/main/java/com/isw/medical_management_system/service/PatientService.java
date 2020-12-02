@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -21,8 +22,10 @@ public class PatientService {
         return patientEntity;
     }
 
-    public List<PatientEntity> findAll() {
-        return patientRepository.findAll();
+    public List<PatientEntity> findAll() { return patientRepository.findAll();
+    }
+
+    public Optional<PatientEntity> findById(int id) { return patientRepository.findById(String.valueOf(id));
     }
 
 }
