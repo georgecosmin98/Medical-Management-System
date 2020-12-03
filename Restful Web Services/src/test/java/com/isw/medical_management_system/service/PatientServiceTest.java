@@ -32,7 +32,11 @@ public class PatientServiceTest {
     @Test
     public void shouldReturnCorrectCreatePatient() {
         PatientEntity patientEntity = new PatientEntity("myAdr", 25, "M");
+
+        //Call method we want to test
         patientService.addPatient(patientEntity);
+
+        //Verify number of invocations method
         verify(patientRepository, times(1)).save(patientEntity);
     }
 
@@ -45,7 +49,7 @@ public class PatientServiceTest {
         //Return all mocked result set on find
         when(patientRepository.findAll()).thenReturn(patient);
 
-        //Call the main method you want to test
+        //Call method we want to test
         patientService.findAll();
 
         //Verify if the method was called
@@ -59,7 +63,7 @@ public class PatientServiceTest {
         //Return all mocked result set on find
         when(patientRepository.findById("1")).thenReturn(Optional.of(patientEntity));
 
-        //Call the main method you want to test
+        //Call method we want to test
         patientService.findById(1);
 
         //Verify if the method was called

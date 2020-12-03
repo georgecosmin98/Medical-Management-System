@@ -28,7 +28,11 @@ public class ServicesServiceTest {
     @Test
     public void shouldReturnCorrectCreateServices() {
         ServicesEntity servicesEntity = new ServicesEntity("1", "Testing", 200);
+
+        //Call method we want to test
         servicesService.addServices(servicesEntity);
+
+        //Verify number of invocations method
         verify(servicesRepository, times(1)).save(servicesEntity);
     }
 
@@ -41,10 +45,10 @@ public class ServicesServiceTest {
         //Return all mocked result set on find
         when(servicesRepository.findAll()).thenReturn(services);
 
-        //Call the main method you want to test
+        //Call method we want to test
         servicesService.findAll();
 
-        //Verify if the method was called
+        //Verify number of invocations method
         verify(servicesRepository).findAll();
     }
 
@@ -55,10 +59,10 @@ public class ServicesServiceTest {
         //Return all mocked result set on find
         when(servicesRepository.findById("1")).thenReturn(java.util.Optional.of(servicesEntity));
 
-        //Call the main method you want to test
+        //Call method we want to test
         servicesService.findById(1);
 
-        //Verify if the method was called
+        //Verify number of invocations method
         verify(servicesRepository).findById("1");
     }
 }
