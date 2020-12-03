@@ -1,7 +1,6 @@
 package com.isw.medical_management_system.service;
 
 import com.isw.medical_management_system.model.PatientEntity;
-import com.isw.medical_management_system.model.ServicesEntity;
 import com.isw.medical_management_system.repository.PatientRepository;
 import org.springframework.stereotype.Service;
 
