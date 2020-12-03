@@ -14,10 +14,9 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @Getter
 @Setter
-
 public class DoctorEntity extends PersonEntity{
 
     private String department;
     private String specialization;
-    
+    private int salary;
 }

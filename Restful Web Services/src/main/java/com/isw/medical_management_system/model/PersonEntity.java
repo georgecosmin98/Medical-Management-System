@@ -22,6 +22,7 @@ public class PersonEntity {
     @GeneratedValue(generator="system-uuid")
     @GenericGenerator(name="system-uuid", strategy = "uuid")
     private String id;
+    private String fullName;
     private String phoneNumber;
     private String emailAddress;
 

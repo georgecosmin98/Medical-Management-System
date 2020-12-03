@@ -28,7 +28,7 @@ public class PatientServiceTest {
 
     @Test
     public void shouldReturnCorrectCreatePatient() {
-        PatientEntity patientEntity = new PatientEntity("1","myPhone","myEmail","myAddr",20,"M");
+        PatientEntity patientEntity = new PatientEntity("1","myFullName","myPhone","myEmail","myAddr",20,"M");
 
         //Call method we want to test
         patientService.addPatient(patientEntity);
@@ -40,8 +40,8 @@ public class PatientServiceTest {
     @Test
     public void shouldReturnAllPatient() {
         List patient = new LinkedList();
-        patient.add(new PatientEntity("1","myPhone","myEmail","myAddr",20,"M"));
-        patient.add(new PatientEntity("2","myPhone2","myEmail2","myAddr2",25,"F"));
+        patient.add(new PatientEntity("1","myFullName","myPhone","myEmail","myAddr",20,"M"));
+        patient.add(new PatientEntity("2","myFullName2","myPhone2","myEmail2","myAddr2",25,"F"));
 
         //Return all mocked result set on find
         when(patientRepository.findAll()).thenReturn(patient);
@@ -55,7 +55,7 @@ public class PatientServiceTest {
 
     @Test
     public void shoulReturnCorrectPatientById() {
-        PatientEntity patientEntity = new PatientEntity("1","myPhone","myEmail","myAddr",20,"M");
+        PatientEntity patientEntity = new PatientEntity("1","myFullName","myPhone","myEmail","myAddr",20,"M");
 
         //Return all mocked result set on find
         when(patientRepository.findById("1")).thenReturn(Optional.of(patientEntity));
