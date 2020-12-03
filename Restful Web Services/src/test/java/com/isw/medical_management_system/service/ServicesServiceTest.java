@@ -11,7 +11,6 @@ import org.mockito.junit.MockitoRule;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Optional;
 
 import static org.mockito.Mockito.*;
 
@@ -43,7 +42,7 @@ public class ServicesServiceTest {
         when(servicesRepository.findAll()).thenReturn(services);
 
         //Call the main method you want to test
-        List result = servicesService.findAll();
+        servicesService.findAll();
 
         //Verify if the method was called
         verify(servicesRepository).findAll();
@@ -57,7 +56,7 @@ public class ServicesServiceTest {
         when(servicesRepository.findById("1")).thenReturn(java.util.Optional.of(servicesEntity));
 
         //Call the main method you want to test
-        Optional<ServicesEntity> result = servicesService.findById(1);
+        servicesService.findById(1);
 
         //Verify if the method was called
         verify(servicesRepository).findById("1");
