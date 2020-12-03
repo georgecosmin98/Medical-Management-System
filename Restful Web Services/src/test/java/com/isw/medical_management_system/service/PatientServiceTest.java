@@ -66,4 +66,16 @@ public class PatientServiceTest {
         //Verify if the method was called
         verify(patientRepository).findById("1");
     }
+
+    @Test
+    public void shouldDeletePatientCorrectly()
+    {
+        PatientEntity patientEntity = new PatientEntity("1","myFullName","myPhone","myEmail","myAddr",20,"M");
+
+        //Call method we want to test
+        patientService.deleteById("1");
+
+        //Verify if method was called
+        verify(patientRepository).deleteById("1");
+    }
 }
