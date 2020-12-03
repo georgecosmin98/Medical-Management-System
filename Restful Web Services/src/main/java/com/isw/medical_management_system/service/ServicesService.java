@@ -29,5 +29,9 @@ public class ServicesService {
         return servicesRepository.findById(String.valueOf(id));
     }
 
+    public void deleteById(String id) {
+        servicesRepository.deleteById(id);
+    }
+
 }
 

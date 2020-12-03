@@ -27,4 +27,10 @@ public class ServicesController {
     public List<ServicesEntity> getServices() {
         return servicesService.findAll();
     }
+
+    @DeleteMapping("deleteService/{id}")
+    public void deleteService(@PathVariable String id)
+    {
+        servicesService.deleteById(id);
+    }
 }

@@ -62,4 +62,15 @@ public class ServicesServiceTest {
         //Verify if the method was called
         verify(servicesRepository).findById("1");
     }
+
+    @Test
+    public void shouldReturnDeletedServiceBtId()
+    {
+        ServicesEntity servicesEntity = new ServicesEntity("1", "romanAdevarat", 20000);
+
+        servicesService.deleteById(servicesEntity.getServicesID());
+
+        //Verify if the method was called
+        verify(servicesRepository).deleteById(servicesEntity.getServicesID());
+    }
 }
