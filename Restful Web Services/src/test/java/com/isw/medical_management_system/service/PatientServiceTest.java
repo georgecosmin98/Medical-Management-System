@@ -1,9 +1,7 @@
 package com.isw.medical_management_system.service;
 
 import com.isw.medical_management_system.model.PatientEntity;
-import com.isw.medical_management_system.model.ServicesEntity;
 import com.isw.medical_management_system.repository.PatientRepository;
-import com.isw.medical_management_system.repository.ServicesRepository;
 import org.junit.Rule;
 import org.junit.Test;
 import org.mockito.InjectMocks;
@@ -16,7 +14,6 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.mockito.Mockito.*;
-import static org.mockito.Mockito.when;
 
 public class PatientServiceTest {
 
@@ -31,7 +28,7 @@ public class PatientServiceTest {
 
     @Test
     public void shouldReturnCorrectCreatePatient() {
-        PatientEntity patientEntity = new PatientEntity("myAdr", 25, "M");
+        PatientEntity patientEntity = new PatientEntity("1","myPhone","myEmail","myAddr",20,"M");
 
         //Call method we want to test
         patientService.addPatient(patientEntity);
@@ -43,8 +40,8 @@ public class PatientServiceTest {
     @Test
     public void shouldReturnAllPatient() {
         List patient = new LinkedList();
-        patient.add(new PatientEntity("myAdr", 20, "M"));
-        patient.add(new PatientEntity("Add", 35, "F"));
+        patient.add(new PatientEntity("1","myPhone","myEmail","myAddr",20,"M"));
+        patient.add(new PatientEntity("2","myPhone2","myEmail2","myAddr2",25,"F"));
 
         //Return all mocked result set on find
         when(patientRepository.findAll()).thenReturn(patient);
@@ -58,7 +55,7 @@ public class PatientServiceTest {
 
     @Test
     public void shoulReturnCorrectPatientById() {
-        PatientEntity patientEntity = new PatientEntity("myArd", 20, "M");
+        PatientEntity patientEntity = new PatientEntity("1","myPhone","myEmail","myAddr",20,"M");
 
         //Return all mocked result set on find
         when(patientRepository.findById("1")).thenReturn(Optional.of(patientEntity));

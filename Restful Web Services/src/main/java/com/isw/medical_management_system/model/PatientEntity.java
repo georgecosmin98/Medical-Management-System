@@ -1,24 +1,27 @@
 package com.isw.medical_management_system.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="t_patient")
-@AllArgsConstructor
-@NoArgsConstructor
+@Table(name = "t_patient")
 @Getter
 @Setter
-
+@NoArgsConstructor
 public class PatientEntity extends PersonEntity {
 
     private String address;
     private int age;
     private String sex;
+
+    @Builder
+    public PatientEntity(String id, String phoneNumber, String emailAddress, String address, int age, String sex) {
+        super(id, phoneNumber, emailAddress);
+        this.address = address;
+        this.age = age;
+        this.sex = sex;
+    }
 
 }
