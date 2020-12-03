@@ -31,7 +31,7 @@ public class PatientServiceTest {
 
     @Test
     public void shouldReturnCorrectCreatePatient() {
-        PatientEntity patientEntity = new PatientEntity("mars", 25, "cum vreau");
+        PatientEntity patientEntity = new PatientEntity("myAdr", 25, "M");
         patientService.addPatient(patientEntity);
         verify(patientRepository, times(1)).save(patientEntity);
     }
@@ -39,14 +39,14 @@ public class PatientServiceTest {
     @Test
     public void shouldReturnAllPatient() {
         List patient = new LinkedList();
-        patient.add(new PatientEntity("maine", 24, "azi"));
-        patient.add(new PatientEntity("ieri", 35, "acu"));
+        patient.add(new PatientEntity("myAdr", 20, "M"));
+        patient.add(new PatientEntity("Add", 35, "F"));
 
         //Return all mocked result set on find
         when(patientRepository.findAll()).thenReturn(patient);
 
         //Call the main method you want to test
-        List result = patientService.findAll();
+        patientService.findAll();
 
         //Verify if the method was called
         verify(patientRepository).findAll();
@@ -54,13 +54,13 @@ public class PatientServiceTest {
 
     @Test
     public void shoulReturnCorrectPatientById() {
-        PatientEntity patientEntity = new PatientEntity("aici", 27, "cum vreau");
+        PatientEntity patientEntity = new PatientEntity("myArd", 20, "M");
 
         //Return all mocked result set on find
         when(patientRepository.findById("1")).thenReturn(Optional.of(patientEntity));
 
         //Call the main method you want to test
-        Optional<PatientEntity> result = patientService.findById(1);
+        patientService.findById(1);
 
         //Verify if the method was called
         verify(patientRepository).findById("1");
