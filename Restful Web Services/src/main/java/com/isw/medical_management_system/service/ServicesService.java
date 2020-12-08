@@ -25,13 +25,9 @@ public class ServicesService {
         return servicesRepository.findAll();
     }
 
-    public Optional<ServicesEntity> findById(int id) {
-        return servicesRepository.findById(String.valueOf(id));
-    }
+    public Optional<ServicesEntity> findById(String id) { return servicesRepository.findById(id); }
 
-    public void deleteById(String id) {
-        servicesRepository.deleteById(id);
-    }
+    public void deleteById(String id) { servicesRepository.deleteById(id); }
 
 }
 

@@ -60,7 +60,7 @@ public class ServicesServiceTest {
         when(servicesRepository.findById("1")).thenReturn(java.util.Optional.of(servicesEntity));
 
         //Call method we want to test
-        servicesService.findById(1);
+        servicesService.findById("1");
 
         //Verify number of invocations method
         verify(servicesRepository).findById("1");

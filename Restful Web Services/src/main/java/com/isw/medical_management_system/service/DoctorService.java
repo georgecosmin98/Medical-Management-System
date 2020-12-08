@@ -28,4 +28,6 @@ public class DoctorService {
     public Optional<DoctorEntity> findById(String id){
         return doctorRepository.findById(id);
     }
+
+    public void deleteById(String id) { doctorRepository.deleteById(id); }
 }
