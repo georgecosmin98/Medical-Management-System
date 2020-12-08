@@ -67,14 +67,19 @@ public class ServicesServiceTest {
     }
 
     @Test
-    public void shouldReturnDeletedServiceById()
+    public void shouldUpdateService()
     {
         ServicesEntity servicesEntity = new ServicesEntity("1", "Testing", 200);
 
+        servicesService.addServices(servicesEntity);
+
+        servicesEntity.setServicesName("OtherServiceName");
+        servicesEntity.setAmount(1500);
+
         //Call method we want to test
-        servicesService.deleteById(servicesEntity.getServicesID());
+        servicesService.updateService(servicesEntity, servicesEntity.getServicesID());
 
         //Verify if the method was called
-        verify(servicesRepository).deleteById(servicesEntity.getServicesID());
+        verify(servicesRepository).save(servicesEntity);
     }
 }
