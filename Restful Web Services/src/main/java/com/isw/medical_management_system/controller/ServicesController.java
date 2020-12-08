@@ -1,6 +1,7 @@
 package com.isw.medical_management_system.controller;
 
 import com.isw.medical_management_system.model.DoctorEntity;
+import com.isw.medical_management_system.model.PatientEntity;
 import com.isw.medical_management_system.model.ServicesEntity;
 import com.isw.medical_management_system.service.ServicesService;
 import org.springframework.http.HttpStatus;
@@ -40,15 +41,8 @@ public class ServicesController {
     }
 
     @PutMapping("/updateService/{id}")
-    public ServicesEntity updateService(@RequestBody ServicesEntity serviceEntity, @PathVariable String id)
+    public ServicesEntity updateService(@RequestBody ServicesEntity servicesEntity, @PathVariable String id)
     {
-        ServicesEntity dbService = servicesService.findById(id).orElse(null);
-        if (dbService != null)
-        {
-            dbService.setServicesName(serviceEntity.getServicesName());
-            dbService.setAmount(serviceEntity.getAmount());
-            return servicesService.addServices(dbService);
-        }
-        return null;
+        return servicesService.updateService(servicesEntity, id);
     }
 }

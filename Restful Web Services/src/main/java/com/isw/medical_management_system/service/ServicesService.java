@@ -3,6 +3,9 @@ package com.isw.medical_management_system.service;
 import com.isw.medical_management_system.model.ServicesEntity;
 import com.isw.medical_management_system.repository.ServicesRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.annotation.Resource;
 import javax.transaction.Transactional;
@@ -28,6 +31,19 @@ public class ServicesService {
     public Optional<ServicesEntity> findById(String id) { return servicesRepository.findById(id); }
 
     public void deleteById(String id) { servicesRepository.deleteById(id); }
+
+    @PutMapping("/updateService/{id}")
+    public ServicesEntity updateService(ServicesEntity serviceEntity, @PathVariable String id)
+    {
+        ServicesEntity dbService = servicesRepository.findById(id).orElse(null);
+        if (dbService != null)
+        {
+            dbService.setServicesName(serviceEntity.getServicesName());
+            dbService.setAmount(serviceEntity.getAmount());
+            return servicesRepository.save(dbService);
+        }
+        return null;
+    }
 
 }
 

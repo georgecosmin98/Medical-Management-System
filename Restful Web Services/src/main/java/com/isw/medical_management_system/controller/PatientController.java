@@ -33,8 +33,8 @@ public class PatientController {
     }
 
     @PutMapping("/updatePatient/{id}")
-    public PatientEntity updatePatient(@RequestBody PatientEntity patientEntity,
-                                       @PathVariable String id) {
+    public PatientEntity updatePatient(@RequestBody PatientEntity patientEntity, @PathVariable String id)
+    {
         return patientService.updatePatient(patientEntity, id);
     }
 }
