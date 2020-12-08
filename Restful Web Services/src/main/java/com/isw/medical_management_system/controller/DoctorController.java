@@ -25,4 +25,7 @@ public class DoctorController {
     public List<DoctorEntity> getDoctors(){
         return doctorService.findAll();
     }
+
+    @DeleteMapping("/deleteDoctor/{id}")
+    public void deleteDoctor(@PathVariable String id){ doctorService.deleteById(id); }
 }

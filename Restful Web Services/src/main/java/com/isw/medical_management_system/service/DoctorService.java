@@ -23,4 +23,6 @@ public class DoctorService {
     public List<DoctorEntity> findAll(){
         return doctorRepository.findAll();
     }
+
+    public void deleteById(String id) { doctorRepository.deleteById(id); }
 }
