@@ -67,10 +67,11 @@ public class ServicesServiceTest {
     }
 
     @Test
-    public void shouldReturnDeletedServiceBtId()
+    public void shouldReturnDeletedServiceById()
     {
-        ServicesEntity servicesEntity = new ServicesEntity("1", "romanAdevarat", 20000);
+        ServicesEntity servicesEntity = new ServicesEntity("1", "Testing", 200);
 
+        //Call method we want to test
         servicesService.deleteById(servicesEntity.getServicesID());
 
         //Verify if the method was called
