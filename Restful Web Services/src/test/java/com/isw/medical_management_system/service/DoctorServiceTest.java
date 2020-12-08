@@ -58,9 +58,22 @@ public class DoctorServiceTest {
         DoctorEntity doctorEntity = new DoctorEntity("1", "MyName", "MyEmailAdress", "myPhoneNumber", "ORL", "MyJob", 1500);
 
         //Call method we want to test
-        doctorRepository.deleteById("1");
+        doctorService.deleteById("1");
 
         //Verify if method was called
         verify(doctorRepository).deleteById("1");
+    }
+
+    @Test
+    public void shouldReturnUpdateDoctor(){
+        DoctorEntity doctorEntity1 = new DoctorEntity("1", "MyName", "MyEmailAdress", "myPhoneNumber", "ORL", "MyJob", 1500);
+        doctorService.addDoctor(doctorEntity1);
+
+        doctorEntity1.setPhoneNumber("newPhone");
+        //Call method we want to test
+        doctorService.updateDoctor(doctorEntity1,"1");
+
+        //Verify if method was called
+        verify(doctorRepository).save(doctorEntity1);
     }
 }
