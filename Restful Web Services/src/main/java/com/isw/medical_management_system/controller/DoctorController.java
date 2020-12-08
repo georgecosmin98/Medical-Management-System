@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @RestController
 @RequestMapping("/doctor")
@@ -18,5 +19,10 @@ public class DoctorController {
     @ResponseStatus(HttpStatus.CREATED)
     public DoctorEntity addDoctor(@RequestBody DoctorEntity doctorEntity){
         return doctorService.addDoctor(doctorEntity);
+    }
+
+    @GetMapping("listOfDoctors")
+    public List<DoctorEntity> getDoctors(){
+        return doctorService.findAll();
     }
 }
