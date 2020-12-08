@@ -38,7 +38,7 @@ public class PatientServiceTest {
     }
 
     @Test
-    public void shouldReturnAllPatient() {
+    public void shouldReturnAllPatients() {
         List patient = new LinkedList();
         patient.add(new PatientEntity("1","myFullName","myPhone","myEmail","myAddr",20,"M"));
         patient.add(new PatientEntity("2","myFullName2","myPhone2","myEmail2","myAddr2",25,"F"));
