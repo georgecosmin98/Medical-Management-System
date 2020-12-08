@@ -30,11 +30,6 @@ public class DoctorController {
 
     @PutMapping("/updateDoctor/{id}")
     public DoctorEntity updateDoctor(@RequestBody DoctorEntity doctorEntity, @PathVariable String id) {
-        DoctorEntity dbDoctor = doctorService.findById(id).orElse(null);
-        if (dbDoctor != null) {
-            dbDoctor.setPhoneNumber(doctorEntity.getPhoneNumber());
-            return doctorService.addDoctor(dbDoctor);
-        }
-        return null;
+        return doctorService.updateDoctor(doctorEntity, id);
     }
 }
