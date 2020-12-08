@@ -51,4 +51,16 @@ public class DoctorServiceTest {
         //Verify if the method was called
         verify(doctorRepository).findAll();
     }
+
+    @Test
+    public void shouldDeleteDoctor()
+    {
+        DoctorEntity doctorEntity = new DoctorEntity("1", "MyName", "MyEmailAdress", "myPhoneNumber", "ORL", "MyJob", 1500);
+
+        //Call method we want to test
+        doctorRepository.deleteById("1");
+
+        //Verify if method was called
+        verify(doctorRepository).deleteById("1");
+    }
 }
