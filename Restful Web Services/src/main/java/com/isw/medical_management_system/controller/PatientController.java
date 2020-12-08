@@ -18,7 +18,7 @@ public class PatientController {
 
     @PostMapping("/addPatient")
     @ResponseStatus(HttpStatus.CREATED)
-    public PatientEntity addPatient(@RequestBody PatientEntity patientEntity){
+    public PatientEntity addPatient(@RequestBody PatientEntity patientEntity) {
         return patientService.addPatient(patientEntity);
     }
 
@@ -28,18 +28,13 @@ public class PatientController {
     }
 
     @DeleteMapping("/deletePatient/{id}")
-    public void deletePatient(@PathVariable String id){ patientService.deleteById(id); }
+    public void deletePatient(@PathVariable String id) {
+        patientService.deleteById(id);
+    }
 
     @PutMapping("/updatePatient/{id}")
     public PatientEntity updatePatient(@RequestBody PatientEntity patientEntity,
-                                       @PathVariable String id){
-        PatientEntity dbPatient = patientService.findById(id).orElse(null);
-        if(dbPatient != null){
-            dbPatient.setAddress(patientEntity.getAddress());
-            dbPatient.setPhoneNumber(patientEntity.getPhoneNumber());
-            dbPatient.setFullName(patientEntity.getFullName());
-            return patientService.addPatient(dbPatient);
-        }
-        return null;
+                                       @PathVariable String id) {
+        return patientService.updatePatient(patientEntity, id);
     }
 }

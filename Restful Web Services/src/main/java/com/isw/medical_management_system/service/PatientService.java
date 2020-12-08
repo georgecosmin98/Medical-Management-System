@@ -21,10 +21,27 @@ public class PatientService {
         return patientEntity;
     }
 
-    public List<PatientEntity> findAll() { return patientRepository.findAll(); }
+    public List<PatientEntity> findAll() {
+        return patientRepository.findAll();
+    }
 
-    public Optional<PatientEntity> findById(String id) { return patientRepository.findById(String.valueOf(id)); }
+    public Optional<PatientEntity> findById(String id) {
+        return patientRepository.findById(String.valueOf(id));
+    }
 
-    public void deleteById(String id) { patientRepository.deleteById(id); }
+    public void deleteById(String id) {
+        patientRepository.deleteById(id);
+    }
 
+    public PatientEntity updatePatient(PatientEntity patientEntity,
+                                       String id) {
+        PatientEntity dbPatient = patientRepository.findById(id).orElse(null);
+        if (dbPatient != null) {
+            dbPatient.setAddress(patientEntity.getAddress());
+            dbPatient.setPhoneNumber(patientEntity.getPhoneNumber());
+            dbPatient.setFullName(patientEntity.getFullName());
+            return patientRepository.save(dbPatient);
+        }
+        return null;
+    }
 }
