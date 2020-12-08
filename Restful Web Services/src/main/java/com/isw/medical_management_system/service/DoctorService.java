@@ -21,13 +21,24 @@ public class DoctorService {
         return doctorEntity;
     }
 
-    public List<DoctorEntity> findAll(){
+    public List<DoctorEntity> findAll() {
         return doctorRepository.findAll();
     }
 
-    public Optional<DoctorEntity> findById(String id){
+    public Optional<DoctorEntity> findById(String id) {
         return doctorRepository.findById(id);
     }
 
-    public void deleteById(String id) { doctorRepository.deleteById(id); }
+    public void deleteById(String id) {
+        doctorRepository.deleteById(id);
+    }
+
+    public DoctorEntity updateDoctor(DoctorEntity doctorEntity, String id) {
+        DoctorEntity dbDoctor = doctorRepository.findById(id).orElse(null);
+        if (dbDoctor != null) {
+            dbDoctor.setPhoneNumber(doctorEntity.getPhoneNumber());
+            return doctorRepository.save(dbDoctor);
+        }
+        return null;
+    }
 }
