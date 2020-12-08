@@ -78,4 +78,18 @@ public class PatientServiceTest {
         //Verify if method was called
         verify(patientRepository).deleteById("1");
     }
+
+    @Test
+    public void shouldReturnUpdatePatient(){
+        PatientEntity patientEntity = new PatientEntity("1","myFullName","myPhone","myEmail","myAddr",20,"M");
+        patientService.addPatient(patientEntity);
+
+        patientEntity.setAge(2);
+
+        //Call method we want to test
+        patientService.updatePatient(patientEntity,patientEntity.getId());
+
+        //Verify if method was called
+        verify(patientRepository).save(patientEntity);
+    }
 }
