@@ -61,7 +61,7 @@ public class PatientServiceTest {
         when(patientRepository.findById("1")).thenReturn(Optional.of(patientEntity));
 
         //Call method we want to test
-        patientService.findById(1);
+        patientService.findById("1");
 
         //Verify if the method was called
         verify(patientRepository).findById("1");

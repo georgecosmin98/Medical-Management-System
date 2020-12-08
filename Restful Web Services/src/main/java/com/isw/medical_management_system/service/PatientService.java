@@ -23,7 +23,7 @@ public class PatientService {
 
     public List<PatientEntity> findAll() { return patientRepository.findAll(); }
 
-    public Optional<PatientEntity> findById(int id) { return patientRepository.findById(String.valueOf(id)); }
+    public Optional<PatientEntity> findById(String id) { return patientRepository.findById(String.valueOf(id)); }
 
     public void deleteById(String id) { patientRepository.deleteById(id); }
 

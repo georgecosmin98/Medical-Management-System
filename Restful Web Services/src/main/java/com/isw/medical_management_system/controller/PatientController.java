@@ -29,4 +29,17 @@ public class PatientController {
 
     @DeleteMapping("/deletePatient/{id}")
     public void deletePatient(@PathVariable String id){ patientService.deleteById(id); }
+
+    @PutMapping("/updatePatient/{id}")
+    public PatientEntity updatePatient(@RequestBody PatientEntity patientEntity,
+                                       @PathVariable String id){
+        PatientEntity dbPatient = patientService.findById(id).orElse(null);
+        if(dbPatient != null){
+            dbPatient.setAddress(patientEntity.getAddress());
+            dbPatient.setPhoneNumber(patientEntity.getPhoneNumber());
+            dbPatient.setFullName(patientEntity.getFullName());
+            return patientService.addPatient(dbPatient);
+        }
+        return null;
+    }
 }
