@@ -6,7 +6,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.print.Doc;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/doctor")
@@ -17,12 +19,22 @@ public class DoctorController {
 
     @PostMapping("/addDoctor")
     @ResponseStatus(HttpStatus.CREATED)
-    public DoctorEntity addDoctor(@RequestBody DoctorEntity doctorEntity){
+    public DoctorEntity addDoctor(@RequestBody DoctorEntity doctorEntity) {
         return doctorService.addDoctor(doctorEntity);
     }
 
-    @GetMapping("listOfDoctors")
-    public List<DoctorEntity> getDoctors(){
+    @GetMapping("/listOfDoctors")
+    public List<DoctorEntity> getDoctors() {
         return doctorService.findAll();
+    }
+
+    @PutMapping("/updateDoctor/{id}")
+    public DoctorEntity updateDoctor(@RequestBody DoctorEntity doctorEntity, @PathVariable String id) {
+        DoctorEntity dbDoctor = doctorService.findById(id).orElse(null);
+        if (dbDoctor != null) {
+            dbDoctor.setPhoneNumber(doctorEntity.getPhoneNumber());
+            return doctorService.addDoctor(dbDoctor);
+        }
+        return null;
     }
 }

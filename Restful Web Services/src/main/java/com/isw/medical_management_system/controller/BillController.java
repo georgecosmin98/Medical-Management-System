@@ -30,4 +30,5 @@ public class BillController {
     public void deleteBill(@PathVariable String id) {
         billService.deleteById(id);
     }
+
 }
