@@ -39,14 +39,16 @@ public class ServicesController {
         return servicesService.findAll();
     }
 
-    /*@PutMapping("/updateService/{id}")
-    public ServicesEntity updateService(@RequestBody ServicesEntity serviceEntity, @PathVariable String id) {
-        ServicesEntity dbService = ServicesService.findById(id).orElse(null);
-        if (dbService != null) {
-            dbService.setServiceName(serviceEntity.getServicesName());
+    @PutMapping("/updateService/{id}")
+    public ServicesEntity updateService(@RequestBody ServicesEntity serviceEntity, @PathVariable String id)
+    {
+        ServicesEntity dbService = servicesService.findById(id).orElse(null);
+        if (dbService != null)
+        {
+            dbService.setServicesName(serviceEntity.getServicesName());
             dbService.setAmount(serviceEntity.getAmount());
-            return updateService.addService(dbService);
+            return servicesService.addServices(dbService);
         }
         return null;
-    }*/
+    }
 }
