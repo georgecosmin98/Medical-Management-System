@@ -2,6 +2,7 @@ package com.isw.medical_management_system.service;
 
 import com.isw.medical_management_system.model.PatientEntity;
 import com.isw.medical_management_system.repository.PatientRepository;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.mockito.InjectMocks;
@@ -17,6 +18,8 @@ import static org.mockito.Mockito.*;
 
 public class PatientServiceTest {
 
+    private PatientEntity firstPatient, secondPatient;
+
     @Mock
     PatientRepository patientRepository;
 
@@ -26,22 +29,27 @@ public class PatientServiceTest {
     @Rule
     public MockitoRule rule = MockitoJUnit.rule();
 
+    @Before
+    public void setUp() throws Exception {
+        firstPatient = new PatientEntity("1","myFullName","myPhone","myEmail","myAddr",20,"M");
+        secondPatient = new PatientEntity("2","myFullName2","myPhone2","myEmail2","myAddr2",25,"F");
+    }
+
     @Test
     public void shouldReturnCorrectCreatePatient() {
-        PatientEntity patientEntity = new PatientEntity("1","myFullName","myPhone","myEmail","myAddr",20,"M");
 
         //Call method we want to test
-        patientService.addPatient(patientEntity);
+        patientService.addPatient(firstPatient);
 
         //Verify number of invocations method
-        verify(patientRepository, times(1)).save(patientEntity);
+        verify(patientRepository, times(1)).save(firstPatient);
     }
 
     @Test
     public void shouldReturnAllPatients() {
         List patient = new LinkedList();
-        patient.add(new PatientEntity("1","myFullName","myPhone","myEmail","myAddr",20,"M"));
-        patient.add(new PatientEntity("2","myFullName2","myPhone2","myEmail2","myAddr2",25,"F"));
+        patient.add(firstPatient);
+        patient.add(secondPatient);
 
         //Return all mocked result set on find
         when(patientRepository.findAll()).thenReturn(patient);
@@ -55,41 +63,37 @@ public class PatientServiceTest {
 
     @Test
     public void shoulReturnCorrectPatientById() {
-        PatientEntity patientEntity = new PatientEntity("1","myFullName","myPhone","myEmail","myAddr",20,"M");
 
         //Return all mocked result set on find
-        when(patientRepository.findById("1")).thenReturn(Optional.of(patientEntity));
+        when(patientRepository.findById(firstPatient.getId())).thenReturn(Optional.of(firstPatient));
 
         //Call method we want to test
-        patientService.findById("1");
+        patientService.findById(firstPatient.getId());
 
         //Verify if the method was called
-        verify(patientRepository).findById("1");
+        verify(patientRepository).findById(firstPatient.getId());
     }
 
     @Test
-    public void shouldDeletePatientCorrectly()
-    {
-        PatientEntity patientEntity = new PatientEntity("1","myFullName","myPhone","myEmail","myAddr",20,"M");
+    public void shouldDeletePatientCorrectly() {
 
         //Call method we want to test
-        patientService.deleteById("1");
+        patientService.deleteById(firstPatient.getId());
 
         //Verify if method was called
-        verify(patientRepository).deleteById("1");
+        verify(patientRepository).deleteById(firstPatient.getId());
     }
 
     @Test
     public void shouldReturnUpdatePatient(){
-        PatientEntity patientEntity = new PatientEntity("1","myFullName","myPhone","myEmail","myAddr",20,"M");
-        patientService.addPatient(patientEntity);
+        patientService.addPatient(firstPatient);
 
-        patientEntity.setAge(2);
+        firstPatient.setAge(2);
 
         //Call method we want to test
-        patientService.updatePatient(patientEntity,patientEntity.getId());
+        patientService.updatePatient(firstPatient,firstPatient.getId());
 
         //Verify if method was called
-        verify(patientRepository).save(patientEntity);
+        verify(patientRepository).save(firstPatient);
     }
 }
