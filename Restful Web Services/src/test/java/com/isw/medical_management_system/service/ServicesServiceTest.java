@@ -2,6 +2,7 @@ package com.isw.medical_management_system.service;
 
 import com.isw.medical_management_system.model.ServicesEntity;
 import com.isw.medical_management_system.repository.ServicesRepository;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.mockito.InjectMocks;
@@ -15,6 +16,7 @@ import java.util.List;
 import static org.mockito.Mockito.*;
 
 public class ServicesServiceTest {
+    private ServicesEntity firstService, secondService;
 
     @Mock
     ServicesRepository servicesRepository;
@@ -25,22 +27,27 @@ public class ServicesServiceTest {
     @Rule
     public MockitoRule rule = MockitoJUnit.rule();
 
+    @Before
+    public void setUp() throws Exception {
+        firstService = new ServicesEntity("1", "Testing", 200);
+        secondService = new ServicesEntity("2", "Testing", 200);
+    }
+
     @Test
     public void shouldReturnCorrectCreateServices() {
-        ServicesEntity servicesEntity = new ServicesEntity("1", "Testing", 200);
 
         //Call method we want to test
-        servicesService.addServices(servicesEntity);
+        servicesService.addServices(firstService);
 
         //Verify number of invocations method
-        verify(servicesRepository, times(1)).save(servicesEntity);
+        verify(servicesRepository, times(1)).save(firstService);
     }
 
     @Test
     public void shouldReturnAllServices() {
         List services = new LinkedList();
-        services.add(new ServicesEntity("1", "Testing", 200));
-        services.add(new ServicesEntity("2", "Testing", 200));
+        services.add(firstService);
+        services.add(secondService);
 
         //Return all mocked result set on find
         when(servicesRepository.findAll()).thenReturn(services);
@@ -54,10 +61,8 @@ public class ServicesServiceTest {
 
     @Test
     public void shoulReturnCorrectServicesById() {
-        ServicesEntity servicesEntity = new ServicesEntity("1", "Testing", 200);
-
         //Return all mocked result set on find
-        when(servicesRepository.findById("1")).thenReturn(java.util.Optional.of(servicesEntity));
+        when(servicesRepository.findById("1")).thenReturn(java.util.Optional.of(firstService));
 
         //Call method we want to test
         servicesService.findById("1");
@@ -67,19 +72,16 @@ public class ServicesServiceTest {
     }
 
     @Test
-    public void shouldUpdateService()
-    {
-        ServicesEntity servicesEntity = new ServicesEntity("1", "Testing", 200);
+    public void shouldUpdateService() {
+        servicesService.addServices(firstService);
 
-        servicesService.addServices(servicesEntity);
-
-        servicesEntity.setServicesName("OtherServiceName");
-        servicesEntity.setAmount(1500);
+        firstService.setServicesName("OtherServiceName");
+        firstService.setAmount(1500);
 
         //Call method we want to test
-        servicesService.updateService(servicesEntity, servicesEntity.getServicesID());
+        servicesService.updateService(firstService, firstService.getServicesID());
 
         //Verify if the method was called
-        verify(servicesRepository).save(servicesEntity);
+        verify(servicesRepository).save(firstService);
     }
 }
