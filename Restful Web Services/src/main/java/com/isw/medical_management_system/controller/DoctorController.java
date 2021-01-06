@@ -23,6 +23,7 @@ public class DoctorController {
     }
 
     @GetMapping("/listOfDoctors")
+    @ResponseStatus(HttpStatus.OK)
     public List<DoctorEntity> getDoctors() {
         return doctorService.findAll();
     }

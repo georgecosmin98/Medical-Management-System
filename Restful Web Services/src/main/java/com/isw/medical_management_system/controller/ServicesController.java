@@ -30,17 +30,20 @@ public class ServicesController {
     }*/
 
     @DeleteMapping("deleteService/{id}")
+    @ResponseStatus(HttpStatus.OK)
     public void deleteService(@PathVariable String id)
     {
         servicesService.deleteById(id);
     }
 
     @GetMapping("/listOfServices")
+    @ResponseStatus(HttpStatus.OK)
     public List<ServicesEntity> getServices() {
         return servicesService.findAll();
     }
 
     @PutMapping("/updateService/{id}")
+    @ResponseStatus(HttpStatus.OK)
     public ServicesEntity updateService(@RequestBody ServicesEntity servicesEntity, @PathVariable String id)
     {
         return servicesService.updateService(servicesEntity, id);
