@@ -70,12 +70,14 @@ export class DoctorComponent implements OnInit {
 
     register(f: NgForm) {
       this.doctService.add(f.value).subscribe(() => { })
+      location.reload();
     }
 
     // ngAfterViewInit() {
     //   this.dataSource.paginator = this.paginator;
     // }
 
+<<<<<<< HEAD
     openModal() {
       const modalRef = this.modalService.open(ModalContentComponent);
       modalRef.componentInstance.user = this.user;
@@ -89,6 +91,8 @@ export class DoctorComponent implements OnInit {
       // })
     }
   }
+=======
+>>>>>>> 68ccd4840456473ef0ff90e60955e383d740171f
   
 
 

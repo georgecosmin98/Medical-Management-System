@@ -1,6 +1,7 @@
 package com.isw.medical_management_system.service;
 
 import com.isw.medical_management_system.model.PatientEntity;
+import com.isw.medical_management_system.model.PrescriptionEntity;
 import com.isw.medical_management_system.repository.PatientRepository;
 import org.junit.Before;
 import org.junit.Rule;
@@ -19,6 +20,7 @@ import static org.mockito.Mockito.*;
 public class PatientServiceTest {
 
     private PatientEntity firstPatient, secondPatient;
+    private List<PrescriptionEntity> prescriptionList;
 
     @Mock
     PatientRepository patientRepository;
@@ -30,9 +32,11 @@ public class PatientServiceTest {
     public MockitoRule rule = MockitoJUnit.rule();
 
     @Before
-    public void setUp() throws Exception {
-        firstPatient = new PatientEntity("1","myFullName","myPhone","myEmail","myAddr",20,"M");
-        secondPatient = new PatientEntity("2","myFullName2","myPhone2","myEmail2","myAddr2",25,"F");
+    public void setUp(){
+        PrescriptionEntity prescription = new PrescriptionEntity("1","medicineName",2,"administrationTest");
+        prescriptionList.add(prescription);
+        firstPatient = new PatientEntity("1","myFullName","myPhone","myEmail","myAddr",20,"M",prescriptionList);
+        secondPatient = new PatientEntity("2","myFullName2","myPhone2","myEmail2","myAddr2",25,"F",prescriptionList);
     }
 
     @Test

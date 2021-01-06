@@ -23,16 +23,19 @@ public class PatientController {
     }
 
     @GetMapping("/listOfPatient")
+    @ResponseStatus(HttpStatus.OK)
     public List<PatientEntity> getPatient() {
         return patientService.findAll();
     }
 
     @DeleteMapping("/deletePatient/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deletePatient(@PathVariable String id) {
         patientService.deleteById(id);
     }
 
     @PutMapping("/updatePatient/{id}")
+    @ResponseStatus(HttpStatus.OK)
     public PatientEntity updatePatient(@RequestBody PatientEntity patientEntity, @PathVariable String id)
     {
         return patientService.updatePatient(patientEntity, id);

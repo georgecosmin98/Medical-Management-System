@@ -28,7 +28,7 @@ public class DoctorServiceTest {
     public MockitoRule rule = MockitoJUnit.rule();
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp(){
         firstDoctor = new DoctorEntity("1", "myName", "myEmail", "myNumber", "myDep", "mySpec", 2000);
         secondDoctor = new DoctorEntity("2", "myName1", "myEmail1", "myNumber1", "myDep1", "mySpec1", 3000);
     }

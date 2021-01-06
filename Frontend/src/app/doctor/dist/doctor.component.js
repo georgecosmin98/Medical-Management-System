@@ -43,6 +43,7 @@ var DoctorComponent = /** @class */ (function () {
     };
     DoctorComponent.prototype.register = function (f) {
         this.doctService.add(f.value).subscribe(function () { });
+<<<<<<< HEAD
     };
     // ngAfterViewInit() {
     //   this.dataSource.paginator = this.paginator;
@@ -58,6 +59,9 @@ var DoctorComponent = /** @class */ (function () {
         // modalRef.componentInstance.passEntry.subscribe((receivedEntry) => {
         //   console.log(receivedEntry);
         // })
+=======
+        location.reload();
+>>>>>>> 68ccd4840456473ef0ff90e60955e383d740171f
     };
     __decorate([
         core_1.ViewChild(paginator_1.MatPaginator)

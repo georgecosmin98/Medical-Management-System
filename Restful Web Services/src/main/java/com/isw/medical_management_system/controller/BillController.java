@@ -22,11 +22,13 @@ public class BillController {
     }
 
     @GetMapping("/listOfBills")
+    @ResponseStatus(HttpStatus.OK)
     public List<BillEntity> getBills() {
         return billService.findAll();
     }
 
     @DeleteMapping("/deleteBill/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteBill(@PathVariable String id) {
         billService.deleteById(id);
     }
