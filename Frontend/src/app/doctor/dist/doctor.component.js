@@ -33,9 +33,7 @@ var DoctorComponent = /** @class */ (function () {
     };
     DoctorComponent.prototype.register = function (f) {
         this.doctService.add(f.value).subscribe(function () { });
-    };
-    DoctorComponent.prototype.ngAfterViewInit = function () {
-        this.dataSource.paginator = this.paginator;
+        location.reload();
     };
     __decorate([
         core_1.ViewChild(paginator_1.MatPaginator)

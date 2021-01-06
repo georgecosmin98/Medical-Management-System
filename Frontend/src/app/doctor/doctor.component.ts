@@ -57,11 +57,12 @@ export class DoctorComponent implements OnInit {
 
     register(f: NgForm) {
       this.doctService.add(f.value).subscribe(() => { })
+      location.reload();
     }
 
-    ngAfterViewInit() {
-      this.dataSource.paginator = this.paginator;
-    }
+    // ngAfterViewInit() {
+    //   this.dataSource.paginator = this.paginator;
+    // }
 
   
 }

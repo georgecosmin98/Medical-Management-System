@@ -6,12 +6,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import javax.print.Doc;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/doctor")
+@CrossOrigin("http://localhost:4200")
 public class DoctorController {
 
     @Resource
