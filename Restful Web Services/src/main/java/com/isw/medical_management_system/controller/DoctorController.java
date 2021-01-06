@@ -35,7 +35,7 @@ public class DoctorController {
     }
 
     @PutMapping("/deleteDoctor/{id}")
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteDoctor(@PathVariable String id){
         doctorService.deleteById(id);
     }

@@ -28,7 +28,7 @@ public class BillController {
     }
 
     @DeleteMapping("/deleteBill/{id}")
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteBill(@PathVariable String id) {
         billService.deleteById(id);
     }

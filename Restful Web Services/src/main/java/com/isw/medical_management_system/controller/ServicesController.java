@@ -30,7 +30,7 @@ public class ServicesController {
     }*/
 
     @DeleteMapping("deleteService/{id}")
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteService(@PathVariable String id)
     {
         servicesService.deleteById(id);

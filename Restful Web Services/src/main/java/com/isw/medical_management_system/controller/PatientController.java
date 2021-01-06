@@ -29,7 +29,7 @@ public class PatientController {
     }
 
     @DeleteMapping("/deletePatient/{id}")
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deletePatient(@PathVariable String id) {
         patientService.deleteById(id);
     }
