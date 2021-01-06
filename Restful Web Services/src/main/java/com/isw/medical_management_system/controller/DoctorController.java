@@ -28,7 +28,14 @@ public class DoctorController {
     }
 
     @PutMapping("/updateDoctor/{id}")
+    @ResponseStatus(HttpStatus.OK)
     public DoctorEntity updateDoctor(@RequestBody DoctorEntity doctorEntity, @PathVariable String id) {
         return doctorService.updateDoctor(doctorEntity, id);
+    }
+
+    @PutMapping("/deleteDoctor/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void deleteDoctor(@PathVariable String id){
+        doctorService.deleteById(id);
     }
 }
