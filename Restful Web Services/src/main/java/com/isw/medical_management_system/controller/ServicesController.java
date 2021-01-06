@@ -1,7 +1,5 @@
 package com.isw.medical_management_system.controller;
 
-import com.isw.medical_management_system.model.DoctorEntity;
-import com.isw.medical_management_system.model.PatientEntity;
 import com.isw.medical_management_system.model.ServicesEntity;
 import com.isw.medical_management_system.service.ServicesService;
 import org.springframework.http.HttpStatus;

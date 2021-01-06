@@ -32,7 +32,7 @@ public class PatientServiceTest {
     public MockitoRule rule = MockitoJUnit.rule();
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp(){
         PrescriptionEntity prescription = new PrescriptionEntity("1","medicineName",2,"administrationTest");
         prescriptionList.add(prescription);
         firstPatient = new PatientEntity("1","myFullName","myPhone","myEmail","myAddr",20,"M",prescriptionList);
