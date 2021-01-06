@@ -11,13 +11,23 @@ var paginator_1 = require("@angular/material/paginator");
 var sort_1 = require("@angular/material/sort");
 var table_1 = require("@angular/material/table");
 var core_1 = require("@angular/core");
+var modal_content_component_1 = require("../modal-content/modal-content.component");
 var DoctorComponent = /** @class */ (function () {
-    function DoctorComponent(formBuilder, doctService, router) {
+    function DoctorComponent(formBuilder, doctService, router, modalService) {
         this.formBuilder = formBuilder;
         this.doctService = doctService;
         this.router = router;
+        this.modalService = modalService;
         this.form = {};
         this.displayedColumns = ['id', 'fullName', 'emailAddress', 'phoneNumber', 'department', 'specialization', 'salary'];
+        this.user = {
+            fullName: '',
+            emailAddress: '',
+            phoneNumber: '',
+            department: '',
+            specialization: '',
+            salary: ''
+        };
     }
     DoctorComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -34,8 +44,20 @@ var DoctorComponent = /** @class */ (function () {
     DoctorComponent.prototype.register = function (f) {
         this.doctService.add(f.value).subscribe(function () { });
     };
-    DoctorComponent.prototype.ngAfterViewInit = function () {
-        this.dataSource.paginator = this.paginator;
+    // ngAfterViewInit() {
+    //   this.dataSource.paginator = this.paginator;
+    // }
+    DoctorComponent.prototype.openModal = function () {
+        var modalRef = this.modalService.open(modal_content_component_1.ModalContentComponent);
+        modalRef.componentInstance.user = this.user;
+        modalRef.result.then(function (result) {
+            if (result) {
+                console.log(result);
+            }
+        });
+        // modalRef.componentInstance.passEntry.subscribe((receivedEntry) => {
+        //   console.log(receivedEntry);
+        // })
     };
     __decorate([
         core_1.ViewChild(paginator_1.MatPaginator)

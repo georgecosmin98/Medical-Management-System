@@ -1,3 +1,14 @@
+
+<div class="excel">
+  <!-- <a class="button" href="/addincasare"> -->
+    <!-- <button type="button" style="float: left" class="btn btn-outline-success">Adaugati</button> -->
+    <button type="button" style="float: left" class="btn btn-outline-success" (click)="openModal()">Adaugati</button>
+  <!-- </a> -->
+</div>
+
+
+
+
 <div class="mat-elevation-z8">
 
 <table mat-table [dataSource]="dataSource" matSort>
@@ -63,45 +74,4 @@
 
 
 
-<div class="col-sm-3">
 
-    <form name="form" (ngSubmit)="register(f)" #f="ngForm" novalidate>
-        <div class="form-group">
-            <label for="fullName">Name</label>
-            <input type="text" class="form-control" name="fullName" [(ngModel)]="form.fullName" required #user="ngModel" />
-        </div>
-        <div class="form-group">
-            <label for="emailAddress">EmailAdress</label>
-            <input type="text" class="form-control" name="emailAddress" [(ngModel)]="form.emailAddress" required #calories="ngModel" />
-        </div>
-
-        <div class="form-group">
-            <label for="phoneNumber">PhoneNumber</label>
-            <input type="text" class="form-control" name="phoneNumber" [(ngModel)]="form.phoneNumber" required #proteins="ngModel" />
-        </div>
-
-        <div class="form-group">
-            <label for="department">Department</label>
-            <input type="text" class="form-control" name="department" [(ngModel)]="form.department" required #carbohydrates="ngModel" />
-        </div>
-
-        <div class="form-group">
-            <label for="specialization">Specialization</label>
-            <input type="text" class="form-control" name="specialization" [(ngModel)]="form.specialization" required #fat="ngModel" />
-        </div>
-
-        <div class="form-group">
-            <label for="salary">Salary</label>
-            <input type="number" class="form-control" name="salary" [(ngModel)]="form.salary" required #weight="ngModel" />
-        </div>
-
-
-
-
-        <div class="form-group">  
-            <button class="btn btn-primary btn-block">Add</button>
-        </div>
-    </form>
-
-
-</div>

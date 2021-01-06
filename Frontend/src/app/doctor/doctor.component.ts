@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import { Component, OnInit,ViewChild, AfterViewInit, Type, Input} from '@angular/core';
 import { DoctorService } from '../api/api/doctor.service'
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalContentComponent } from '../modal-content/modal-content.component'
 
 @Component({
   selector: 'app-doctor',
@@ -14,6 +16,7 @@ import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
 })
 export class DoctorComponent implements OnInit {
 
+  
   form: any = {};
   displayedColumns: string[] = ['id','fullName', 'emailAddress', 'phoneNumber', 'department', 'specialization', 'salary'];
   values: PeriodicElement[];
@@ -23,9 +26,19 @@ export class DoctorComponent implements OnInit {
 
 
 
+  public user = {
+    fullName: '',
+    emailAddress : '',
+    phoneNumber : '',
+    department : '',
+    specialization : '',
+    salary : ''
+  }
 
 
-  constructor(private formBuilder : FormBuilder, private doctService : DoctorService , public router : Router) { 
+
+
+  constructor(private formBuilder : FormBuilder, private doctService : DoctorService , public router : Router, public modalService: NgbModal) { 
 
   }
   
@@ -59,12 +72,25 @@ export class DoctorComponent implements OnInit {
       this.doctService.add(f.value).subscribe(() => { })
     }
 
-    ngAfterViewInit() {
-      this.dataSource.paginator = this.paginator;
-    }
+    // ngAfterViewInit() {
+    //   this.dataSource.paginator = this.paginator;
+    // }
 
+    openModal() {
+      const modalRef = this.modalService.open(ModalContentComponent);
+      modalRef.componentInstance.user = this.user;
+      modalRef.result.then((result) => {
+        if (result) {
+          console.log(result);
+        }
+      });
+      // modalRef.componentInstance.passEntry.subscribe((receivedEntry) => {
+      //   console.log(receivedEntry);
+      // })
+    }
+  }
   
-}
+
 
 
 

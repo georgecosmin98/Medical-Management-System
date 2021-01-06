@@ -30,6 +30,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { multicast } from 'rxjs-compat/operator/multicast';
 import { DoctorComponent } from './doctor/doctor.component';
+import { ModalContentComponent } from './modal-content/modal-content.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -48,6 +50,7 @@ import { DoctorComponent } from './doctor/doctor.component';
     AppComponent,
     FilterPipe,
     DoctorComponent,
+    ModalContentComponent,
 
 
 
@@ -75,7 +78,8 @@ import { DoctorComponent } from './doctor/doctor.component';
     MatSortModule,
     MatNativeDateModule,
     ReactiveFormsModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    NgbModule
 
 
 
