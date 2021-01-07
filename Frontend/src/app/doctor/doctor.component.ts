@@ -23,6 +23,8 @@ export class DoctorComponent implements OnInit {
   dataSource: MatTableDataSource<PeriodicElement>;
   currentUser: any;
   public rows: any;
+  name: string;
+  name1:string;
 
 
 
@@ -77,7 +79,6 @@ export class DoctorComponent implements OnInit {
     //   this.dataSource.paginator = this.paginator;
     // }
 
-<<<<<<< HEAD
     openModal() {
       const modalRef = this.modalService.open(ModalContentComponent);
       modalRef.componentInstance.user = this.user;
@@ -90,9 +91,34 @@ export class DoctorComponent implements OnInit {
       //   console.log(receivedEntry);
       // })
     }
+
+
+    searchName() {
+      this.dataSource = new MatTableDataSource(this.rows)
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+  
+      if (this.name1 != "") {
+        this.rows = this.rows.filter(res => {
+          return res.name.toLocaleLowerCase().match(this.name1.toLocaleLowerCase());
+        });
+  
+      } else if (this.name1 == "") {
+        this.ngOnInit();
+      }
+    }
+
+    applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
-=======
->>>>>>> 68ccd4840456473ef0ff90e60955e383d740171f
+
+  }
+
   
 
 

@@ -43,7 +43,7 @@ var DoctorComponent = /** @class */ (function () {
     };
     DoctorComponent.prototype.register = function (f) {
         this.doctService.add(f.value).subscribe(function () { });
-<<<<<<< HEAD
+        location.reload();
     };
     // ngAfterViewInit() {
     //   this.dataSource.paginator = this.paginator;
@@ -59,9 +59,20 @@ var DoctorComponent = /** @class */ (function () {
         // modalRef.componentInstance.passEntry.subscribe((receivedEntry) => {
         //   console.log(receivedEntry);
         // })
-=======
-        location.reload();
->>>>>>> 68ccd4840456473ef0ff90e60955e383d740171f
+    };
+    DoctorComponent.prototype.searchName = function () {
+        var _this = this;
+        this.dataSource = new table_1.MatTableDataSource(this.rows);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+        if (this.name1 != "") {
+            this.rows = this.rows.filter(function (res) {
+                return res.name.toLocaleLowerCase().match(_this.name1.toLocaleLowerCase());
+            });
+        }
+        else if (this.name1 == "") {
+            this.ngOnInit();
+        }
     };
     __decorate([
         core_1.ViewChild(paginator_1.MatPaginator)

@@ -1,3 +1,10 @@
+<div class="active-pink-3 active-pink-4 mb-4">
+  <mat-form-field>
+    <mat-label></mat-label>
+    <input class="form-control" matInput (keyup)="applyFilter($event)" placeholder="Search all" #input>
+  </mat-form-field>
+</div>
+
 
 <div class="excel">
   <!-- <a class="button" href="/addincasare"> -->
@@ -16,14 +23,22 @@
 
 
     <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>id </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>id</th>
       <td mat-cell *matCellDef="let element"> {{element.id}} </td>
       <td mat-footer-cell *matFooterCellDef></td>
     </ng-container>
 
     <!-- Position Column -->
     <ng-container matColumnDef="fullName">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>fullName </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>fullName 
+        <div>
+          <mat-form-field>
+            <input matInput class="form-field" type="text" #myInput [(ngModel)]="name1" (input)="searchName()"
+              placeholder="Search Name">
+            <br />
+          </mat-form-field>
+        </div>
+      </th>
       <td mat-cell *matCellDef="let element"> {{element.fullName}} </td>
       <td mat-footer-cell *matFooterCellDef></td>
     </ng-container>
