@@ -30,7 +30,7 @@
 
     <!-- Position Column -->
     <ng-container matColumnDef="fullName">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>fullName 
+      <th mat-header-cell *matHeaderCellDef>fullName 
         <div>
           <mat-form-field>
             <input matInput class="form-field" type="text" #myInput [(ngModel)]="name1" (input)="searchName()"
@@ -45,7 +45,7 @@
 
     <!-- Name Column -->
     <ng-container matColumnDef="emailAddress">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>emailAddress </th>
+      <th mat-header-cell *matHeaderCellDef>emailAddress </th>
       <td mat-cell *matCellDef="let element"> {{element.emailAddress}} </td>
       <td mat-footer-cell *matFooterCellDef></td>
     </ng-container>
@@ -76,6 +76,12 @@
       <td mat-cell *matCellDef="let element"> {{element.salary}} </td>
       <td mat-footer-cell *matFooterCellDef></td>
     </ng-container>
+
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> delete </th>
+      <td mat-cell *matCellDef="let element"> <a class="btn btn-sm text-while btn-danger" (click)="delete1(element.number)">Delete</a></td>
+      <td mat-footer-cell *matFooterCellDef></td>
+      </ng-container>
 
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

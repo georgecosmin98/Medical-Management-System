@@ -20,6 +20,7 @@ export class DoctorService {
     protected basePath = 'http://localhost:8080';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
+    public rows: any;
 
     constructor(protected httpClient: HttpClient, @Optional()@Inject(BASE_PATH) basePath: string, @Optional() configuration: Configuration) {
         if (basePath) {
@@ -130,6 +131,15 @@ export class DoctorService {
                 reportProgress: reportProgress
             }
         );
+    }
+
+
+    deleteData(id){
+        return this.httpClient.delete(`${this.basePath}/doctor/deleteDoctor/${encodeURIComponent(String(id))}`)
+        .map(res=>
+            {
+            this.rows;
+            })
     }
     
 

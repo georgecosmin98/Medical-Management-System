@@ -12,6 +12,7 @@ var sort_1 = require("@angular/material/sort");
 var table_1 = require("@angular/material/table");
 var core_1 = require("@angular/core");
 var modal_content_component_1 = require("../modal-content/modal-content.component");
+require("rxjs/Rx");
 var DoctorComponent = /** @class */ (function () {
     function DoctorComponent(formBuilder, doctService, router, modalService) {
         this.formBuilder = formBuilder;
@@ -19,7 +20,7 @@ var DoctorComponent = /** @class */ (function () {
         this.router = router;
         this.modalService = modalService;
         this.form = {};
-        this.displayedColumns = ['id', 'fullName', 'emailAddress', 'phoneNumber', 'department', 'specialization', 'salary'];
+        this.displayedColumns = ['id', 'fullName', 'emailAddress', 'phoneNumber', 'department', 'specialization', 'salary', 'delete'];
         this.user = {
             fullName: '',
             emailAddress: '',
@@ -73,6 +74,27 @@ var DoctorComponent = /** @class */ (function () {
         else if (this.name1 == "") {
             this.ngOnInit();
         }
+    };
+    DoctorComponent.prototype.applyFilter = function (event) {
+        var filterValue = event.target.value;
+        this.dataSource.filter = filterValue.trim().toLowerCase();
+        if (this.dataSource.paginator) {
+            this.dataSource.paginator.firstPage();
+        }
+    };
+    DoctorComponent.prototype.getData = function () {
+        var _this = this;
+        this.doctService.doctorSearchAll().subscribe(function (res) {
+            _this.rows = res;
+        });
+    };
+    DoctorComponent.prototype.delete1 = function (j) {
+        var _this = this;
+        this.doctService.deleteData(j).subscribe(function (res) {
+            _this.getData();
+            console.log("delete");
+            location.reload();
+        });
     };
     __decorate([
         core_1.ViewChild(paginator_1.MatPaginator)

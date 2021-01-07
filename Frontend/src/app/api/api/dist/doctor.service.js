@@ -93,6 +93,13 @@ var DoctorService = /** @class */ (function () {
             reportProgress: reportProgress
         });
     };
+    DoctorService.prototype.deleteData = function (id) {
+        var _this = this;
+        return this.httpClient["delete"](this.basePath + "/doctor/deleteDoctor/" + encodeURIComponent(String(id)))
+            .map(function (res) {
+            _this.rows;
+        });
+    };
     DoctorService = __decorate([
         core_1.Injectable(),
         __param(1, core_1.Optional()), __param(1, core_1.Inject(variables_1.BASE_PATH)), __param(2, core_1.Optional())

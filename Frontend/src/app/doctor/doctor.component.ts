@@ -8,6 +8,7 @@ import { DoctorService } from '../api/api/doctor.service'
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalContentComponent } from '../modal-content/modal-content.component'
+import 'rxjs/Rx';
 
 @Component({
   selector: 'app-doctor',
@@ -18,12 +19,12 @@ export class DoctorComponent implements OnInit {
 
   
   form: any = {};
-  displayedColumns: string[] = ['id','fullName', 'emailAddress', 'phoneNumber', 'department', 'specialization', 'salary'];
+  displayedColumns: string[] = ['id','fullName', 'emailAddress', 'phoneNumber', 'department', 'specialization', 'salary', 'delete'];
   values: PeriodicElement[];
   dataSource: MatTableDataSource<PeriodicElement>;
   currentUser: any;
   public rows: any;
-  name: string;
+  name: any;
   name1:string;
 
 
@@ -40,7 +41,7 @@ export class DoctorComponent implements OnInit {
 
 
 
-  constructor(private formBuilder : FormBuilder, private doctService : DoctorService , public router : Router, public modalService: NgbModal) { 
+  constructor(private formBuilder : FormBuilder, private doctService : DoctorService , public router : Router, public modalService: NgbModal,) { 
 
   }
   
@@ -116,6 +117,25 @@ export class DoctorComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
+
+
+
+  getData(){
+    this.doctService.doctorSearchAll().subscribe(res=>
+      {
+        this.rows = res;
+      })
+}
+delete1(j){
+  this.doctService.deleteData(j).subscribe(res=>
+    {
+      this.getData()
+      console.log("delete");
+      location.reload();
+    })
+
+}
+
 
   }
 
