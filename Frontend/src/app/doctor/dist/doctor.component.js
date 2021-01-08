@@ -68,7 +68,7 @@ var DoctorComponent = /** @class */ (function () {
         this.dataSource.sort = this.sort;
         if (this.name1 != "") {
             this.rows = this.rows.filter(function (res) {
-                return res.name.toLocaleLowerCase().match(_this.name1.toLocaleLowerCase());
+                return res.fullName.toLocaleLowerCase().match(_this.name1.toLocaleLowerCase());
             });
         }
         else if (this.name1 == "") {

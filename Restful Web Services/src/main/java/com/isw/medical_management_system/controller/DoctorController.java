@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/doctor")
-@CrossOrigin("http://localhost:4200")
+@CrossOrigin("*")
 public class DoctorController {
 
     @Resource
@@ -34,7 +34,7 @@ public class DoctorController {
         return doctorService.updateDoctor(doctorEntity, id);
     }
 
-    @PutMapping("/deleteDoctor/{id}")
+    @DeleteMapping("/deleteDoctor/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteDoctor(@PathVariable String id){
         doctorService.deleteById(id);

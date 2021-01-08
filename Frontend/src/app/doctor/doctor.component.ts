@@ -3,7 +3,7 @@ import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Component, OnInit,ViewChild, AfterViewInit, Type, Input} from '@angular/core';
+import { Component, OnInit,ViewChild, AfterViewInit, Type, Input, ViewEncapsulation} from '@angular/core';
 import { DoctorService } from '../api/api/doctor.service'
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -104,12 +104,13 @@ export class DoctorComponent implements OnInit {
   
       if (this.name1 != "") {
         this.rows = this.rows.filter(res => {
-          return res.name.toLocaleLowerCase().match(this.name1.toLocaleLowerCase());
+          return res.fullName.toLocaleLowerCase().match(this.name1.toLocaleLowerCase());
         });
   
       } else if (this.name1 == "") {
         this.ngOnInit();
       }
+      
     }
 
     applyFilter(event: Event) {
