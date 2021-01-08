@@ -9,6 +9,8 @@ import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalContentComponent } from '../modal-content/modal-content.component'
 import 'rxjs/Rx';
+import { ModalConfirmComponent} from '../modal-confirm/modal-confirm.component';
+
 
 @Component({
   selector: 'app-doctor',
@@ -26,6 +28,7 @@ export class DoctorComponent implements OnInit {
   public rows: any;
   name: any;
   name1:string;
+  confirm : any;
 
 
 
@@ -133,6 +136,26 @@ delete1(j){
       console.log("delete");
       location.reload();
     })
+
+}
+
+
+deleteWithModal(j){
+  const modalRef = this.modalService.open(ModalConfirmComponent);
+  modalRef.componentInstance.confirm = this.confirm;
+  modalRef.result.then((result) => {
+    console.log(result);
+    if (result) {
+      console.log(result);
+      this.doctService.deleteData(j).subscribe(res=>
+    {
+        this.getData()
+        console.log("delete");
+      // location.reload();
+    })
+
+  }
+});
 
 }
 

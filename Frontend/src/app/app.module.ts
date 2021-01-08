@@ -32,6 +32,7 @@ import { multicast } from 'rxjs-compat/operator/multicast';
 import { DoctorComponent } from './doctor/doctor.component';
 import { ModalContentComponent } from './modal-content/modal-content.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ModalConfirmComponent } from './modal-confirm/modal-confirm.component';
 
 
 
@@ -51,6 +52,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FilterPipe,
     DoctorComponent,
     ModalContentComponent,
+    ModalConfirmComponent,
 
 
 
