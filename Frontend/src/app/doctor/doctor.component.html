@@ -79,11 +79,10 @@
 
     <ng-container matColumnDef="delete">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> delete </th>
-<<<<<<< HEAD
-      <td mat-cell *matCellDef="let element"> <a class="btn btn-sm text-while btn-danger" (click)="deleteWithModal(element.number)">Delete</a></td>
+      <td mat-cell *matCellDef="let element"> <a class="btn btn-sm text-while btn-danger" (click)="deleteWithModal(element.id)">Delete</a></td>
 =======
-      <td mat-cell *matCellDef="let element"> <a class="btn btn-sm text-while btn-danger" (click)="delete1(element.id)">Delete</a></td>
->>>>>>> c65c276bfaa7b57ac6fabcb2ee0681d9b7b5ff21
+      <!-- <td mat-cell *matCellDef="let element"> <a class="btn btn-sm text-while btn-danger" (click)="delete1(element.id)">Delete</a></td> -->
+
       <td mat-footer-cell *matFooterCellDef></td>
       </ng-container>
 

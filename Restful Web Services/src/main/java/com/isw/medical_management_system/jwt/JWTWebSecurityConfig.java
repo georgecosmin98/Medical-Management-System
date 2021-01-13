@@ -83,7 +83,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
                     .and()
                     .ignoring()
                     .antMatchers(
-                            "/doctor/*" //Ignore auth for doctors
+                            "/doctor/**" //Ignore auth for doctors
                     )
                     .and()
                     .ignoring()

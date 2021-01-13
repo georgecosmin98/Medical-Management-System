@@ -12,7 +12,7 @@ var ModalContentComponent = /** @class */ (function () {
     function ModalContentComponent(activeModal, doctorService) {
         this.activeModal = activeModal;
         this.doctorService = doctorService;
-        this.passEntry = new core_1.EventEmitter();
+        // @Output() passEntry: EventEmitter<any> = new EventEmitter();
         this.form = {};
     }
     ModalContentComponent.prototype.ngOnInit = function () {
@@ -25,9 +25,6 @@ var ModalContentComponent = /** @class */ (function () {
     __decorate([
         core_1.Input()
     ], ModalContentComponent.prototype, "user");
-    __decorate([
-        core_1.Output()
-    ], ModalContentComponent.prototype, "passEntry");
     ModalContentComponent = __decorate([
         core_1.Component({
             selector: 'app-modal-content',

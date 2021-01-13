@@ -9,7 +9,7 @@ import { DoctorService } from '../api/'
 })
 export class ModalContentComponent implements OnInit {
   @Input() public user;
-  @Output() passEntry: EventEmitter<any> = new EventEmitter();
+  // @Output() passEntry: EventEmitter<any> = new EventEmitter();
   form: any = {};
 
   constructor(public activeModal: NgbActiveModal, private doctorService:DoctorService) { }

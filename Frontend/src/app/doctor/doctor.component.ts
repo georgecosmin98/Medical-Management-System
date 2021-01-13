@@ -41,6 +41,10 @@ export class DoctorComponent implements OnInit {
     salary : ''
   }
 
+  id: string;
+
+
+
 
 
 
@@ -51,6 +55,8 @@ export class DoctorComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
+
+  
 
  
 
@@ -142,18 +148,19 @@ delete1(j){
 
 
 deleteWithModal(j){
+  console.log(j);
   const modalRef = this.modalService.open(ModalConfirmComponent);
-  modalRef.componentInstance.confirm = this.confirm;
+  modalRef.componentInstance.j = j;
   modalRef.result.then((result) => {
     console.log(result);
     if (result) {
       console.log(result);
-      this.doctService.deleteData(j).subscribe(res=>
-    {
-        this.getData()
-        console.log("delete");
-      // location.reload();
-    })
+    //   this.doctService.deleteData(j).subscribe(res=>
+    // {
+    //     this.getData()
+    //     console.log("delete");
+    //   // location.reload();
+    // })
 
   }
 });

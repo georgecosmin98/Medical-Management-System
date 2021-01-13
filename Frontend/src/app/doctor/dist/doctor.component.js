@@ -13,6 +13,7 @@ var table_1 = require("@angular/material/table");
 var core_1 = require("@angular/core");
 var modal_content_component_1 = require("../modal-content/modal-content.component");
 require("rxjs/Rx");
+var modal_confirm_component_1 = require("../modal-confirm/modal-confirm.component");
 var DoctorComponent = /** @class */ (function () {
     function DoctorComponent(formBuilder, doctService, router, modalService) {
         this.formBuilder = formBuilder;
@@ -94,6 +95,23 @@ var DoctorComponent = /** @class */ (function () {
             _this.getData();
             console.log("delete");
             location.reload();
+        });
+    };
+    DoctorComponent.prototype.deleteWithModal = function (j) {
+        console.log(j);
+        var modalRef = this.modalService.open(modal_confirm_component_1.ModalConfirmComponent);
+        modalRef.componentInstance.j = j;
+        modalRef.result.then(function (result) {
+            console.log(result);
+            if (result) {
+                console.log(result);
+                //   this.doctService.deleteData(j).subscribe(res=>
+                // {
+                //     this.getData()
+                //     console.log("delete");
+                //   // location.reload();
+                // })
+            }
         });
     };
     __decorate([

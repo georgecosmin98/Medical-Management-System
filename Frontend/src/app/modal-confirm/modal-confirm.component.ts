@@ -10,6 +10,7 @@ import { DoctorService } from '../api/'
 })
 export class ModalConfirmComponent implements OnInit {
   rows : any;
+  j: string;
 
   constructor(public activeModal: NgbActiveModal, public doctorService:DoctorService) { }
 
@@ -22,10 +23,12 @@ export class ModalConfirmComponent implements OnInit {
         this.rows = res;
       })
 }
-delete1(j){
-  this.doctorService.deleteData(j.value).subscribe(res=>
+delete1(id){
+  console.log(this.j);
+  this.doctorService.deleteData(this.j).subscribe(res=>
     {
       this.getData()
+     
       console.log("delete");
       location.reload();
     })
