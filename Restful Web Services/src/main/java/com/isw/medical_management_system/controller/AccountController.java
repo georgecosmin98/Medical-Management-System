@@ -22,9 +22,16 @@ public class AccountController {
     }
 
     @PostMapping("/sign-up")
-    public void signUp(@RequestBody ApplicationUserEntity user) {
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        applicationUserRepository.save(user);
+    public String signUp(@RequestBody ApplicationUserEntity user) {
+
+        if(applicationUserRepository.existsApplicationUserEntityByUsername(user.getUsername()))
+            return "User already exist!";
+        else{
+            user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+            applicationUserRepository.save(user);
+            return "User succesfully created";
+        }
+
     }
 
 
