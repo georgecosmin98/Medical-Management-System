@@ -40,6 +40,10 @@ public class PatientService {
             dbPatient.setAddress(patientEntity.getAddress());
             dbPatient.setPhoneNumber(patientEntity.getPhoneNumber());
             dbPatient.setFullName(patientEntity.getFullName());
+            dbPatient.setAge(patientEntity.getAge());
+            dbPatient.setSex(patientEntity.getSex());
+            dbPatient.setPrescription(patientEntity.getPrescription());
+
             return patientRepository.save(dbPatient);
         }
         return null;

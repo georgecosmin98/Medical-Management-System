@@ -21,12 +21,6 @@ public class ServicesController {
         return servicesService.addServices(servicesEntity);
     }
 
-    /*@GetMapping("/listOfServices")
-    @ResponseStatus(HttpStatus.OK)
-    public List<ServicesEntity> getServices() {
-        return servicesService.findAll();
-    }*/
-
     @DeleteMapping("deleteService/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteService(@PathVariable String id)

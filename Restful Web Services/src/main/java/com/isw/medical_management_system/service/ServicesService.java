@@ -31,7 +31,6 @@ public class ServicesService {
 
     public void deleteById(String id) { servicesRepository.deleteById(id); }
 
-    @PutMapping("/updateService/{id}")
     public ServicesEntity updateService(ServicesEntity serviceEntity, @PathVariable String id)
     {
         ServicesEntity dbService = servicesRepository.findById(id).orElse(null);
