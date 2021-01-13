@@ -83,25 +83,27 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
                     .and()
                     .ignoring()
                     .antMatchers(
-                            HttpMethod.GET,
                             "/doctor/*" //Ignore auth for doctors
                     )
                     .and()
                     .ignoring()
                     .antMatchers(
-                            "/patient/**" //Ignore auth for patient
+                            "/patient/*" //Ignore auth for patient
                     )
                     .and()
                     .ignoring()
                     .antMatchers(
-                            HttpMethod.GET,
                             "/bill/*" //Ignore auth for bill
                     )
                     .and()
                     .ignoring()
                     .antMatchers(
-                            HttpMethod.GET,
                             "/services/*" //Ignore auth for services
+                    )
+                    .and()
+                    .ignoring()
+                    .antMatchers(
+                            "/users/*" //Ignore auth for patient
                     );
         }
     }

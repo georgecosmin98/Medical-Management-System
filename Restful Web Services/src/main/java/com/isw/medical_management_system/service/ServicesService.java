@@ -4,7 +4,6 @@ import com.isw.medical_management_system.model.ServicesEntity;
 import com.isw.medical_management_system.repository.ServicesRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
 
 import javax.annotation.Resource;
 import javax.transaction.Transactional;

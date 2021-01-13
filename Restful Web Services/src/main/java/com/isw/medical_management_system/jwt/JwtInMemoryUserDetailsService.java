@@ -1,34 +1,34 @@
 package com.isw.medical_management_system.jwt;
 
+import com.isw.medical_management_system.model.ApplicationUserEntity;
+import com.isw.medical_management_system.repository.ApplicationUserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import static java.util.Collections.emptyList;
+
 @Service
 public class JwtInMemoryUserDetailsService implements UserDetailsService {
-
-    static List<JwtUserDetails> inMemoryUserList = new ArrayList<>();
-
-    static {
-        inMemoryUserList.add(new JwtUserDetails(1L, "testisw",
-                "$2a$10$3zHzb.Npv1hfZbLEU5qsdOju/tk2je6W6PnNnY.c1ujWPcZh4PL6e", "ROLE_USER_2"));
-    }
-
+    @Resource
+    private ApplicationUserRepository applicationUserRepository;
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<JwtUserDetails> findFirst = inMemoryUserList.stream()
-                .filter(user -> user.getUsername().equals(username)).findFirst();
+        ApplicationUserEntity applicationUser = applicationUserRepository.findByUsername(username);
 
-        if (!findFirst.isPresent()) {
+        if (applicationUser == null) {
             throw new UsernameNotFoundException(String.format("USER_NOT_FOUND '%s'.", username));
         }
 
-        return findFirst.get();
+        return new JwtUserDetails(applicationUser.getId(),applicationUser.getUsername(), applicationUser.getPassword(),applicationUser.getRole());
     }
 
 }
