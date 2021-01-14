@@ -26,6 +26,11 @@ export class ModalUpdateComponent implements OnInit {
       })
 }
 
+close(){
+  this.activeModal.dismiss('Cross click')
+  location.reload();
+}
+
 update(j, f: NgForm) {
   console.log(this.j.id);
   this.doctorService.updateDate(this.j.id, f.value).subscribe(() => { })

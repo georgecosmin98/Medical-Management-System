@@ -22,6 +22,10 @@ var ModalUpdateComponent = /** @class */ (function () {
             _this.rows = res;
         });
     };
+    ModalUpdateComponent.prototype.close = function () {
+        this.activeModal.dismiss('Cross click');
+        location.reload();
+    };
     ModalUpdateComponent.prototype.update = function (j, f) {
         console.log(this.j.id);
         this.doctorService.updateDate(this.j.id, f.value).subscribe(function () { });
