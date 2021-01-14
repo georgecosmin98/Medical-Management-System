@@ -10,6 +10,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalContentComponent } from '../modal-content/modal-content.component'
 import 'rxjs/Rx';
 import { ModalConfirmComponent} from '../modal-confirm/modal-confirm.component';
+import { ModalUpdateComponent } from '../modal-update/modal-update.component';
 
 
 @Component({
@@ -21,7 +22,7 @@ export class DoctorComponent implements OnInit {
 
   
   form: any = {};
-  displayedColumns: string[] = ['id','fullName', 'emailAddress', 'phoneNumber', 'department', 'specialization', 'salary', 'delete'];
+  displayedColumns: string[] = ['id','fullName', 'emailAddress', 'phoneNumber', 'department', 'specialization', 'salary', 'delete', 'update'];
   values: PeriodicElement[];
   dataSource: MatTableDataSource<PeriodicElement>;
   currentUser: any;
@@ -164,7 +165,25 @@ deleteWithModal(j){
 
   }
 });
+}
 
+updateWithModal(j){
+  console.log(j);
+  const modalRef = this.modalService.open(ModalUpdateComponent);
+  modalRef.componentInstance.j = j;
+  modalRef.result.then((result) => {
+    console.log(result);
+    if (result) {
+      console.log(result);
+    //   this.doctService.deleteData(j).subscribe(res=>
+    // {
+    //     this.getData()
+    //     console.log("delete");
+    //   // location.reload();
+    // })
+
+  }
+});
 }
 
 

@@ -33,6 +33,7 @@ import { DoctorComponent } from './doctor/doctor.component';
 import { ModalContentComponent } from './modal-content/modal-content.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalConfirmComponent } from './modal-confirm/modal-confirm.component';
+import { ModalUpdateComponent } from './modal-update/modal-update.component';
 
 
 
@@ -53,6 +54,7 @@ import { ModalConfirmComponent } from './modal-confirm/modal-confirm.component';
     DoctorComponent,
     ModalContentComponent,
     ModalConfirmComponent,
+    ModalUpdateComponent,
 
 
 

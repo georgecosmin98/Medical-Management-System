@@ -14,6 +14,7 @@ var core_1 = require("@angular/core");
 var modal_content_component_1 = require("../modal-content/modal-content.component");
 require("rxjs/Rx");
 var modal_confirm_component_1 = require("../modal-confirm/modal-confirm.component");
+var modal_update_component_1 = require("../modal-update/modal-update.component");
 var DoctorComponent = /** @class */ (function () {
     function DoctorComponent(formBuilder, doctService, router, modalService) {
         this.formBuilder = formBuilder;
@@ -21,7 +22,7 @@ var DoctorComponent = /** @class */ (function () {
         this.router = router;
         this.modalService = modalService;
         this.form = {};
-        this.displayedColumns = ['id', 'fullName', 'emailAddress', 'phoneNumber', 'department', 'specialization', 'salary', 'delete'];
+        this.displayedColumns = ['id', 'fullName', 'emailAddress', 'phoneNumber', 'department', 'specialization', 'salary', 'delete', 'update'];
         this.user = {
             fullName: '',
             emailAddress: '',
@@ -100,6 +101,23 @@ var DoctorComponent = /** @class */ (function () {
     DoctorComponent.prototype.deleteWithModal = function (j) {
         console.log(j);
         var modalRef = this.modalService.open(modal_confirm_component_1.ModalConfirmComponent);
+        modalRef.componentInstance.j = j;
+        modalRef.result.then(function (result) {
+            console.log(result);
+            if (result) {
+                console.log(result);
+                //   this.doctService.deleteData(j).subscribe(res=>
+                // {
+                //     this.getData()
+                //     console.log("delete");
+                //   // location.reload();
+                // })
+            }
+        });
+    };
+    DoctorComponent.prototype.updateWithModal = function (j) {
+        console.log(j);
+        var modalRef = this.modalService.open(modal_update_component_1.ModalUpdateComponent);
         modalRef.componentInstance.j = j;
         modalRef.result.then(function (result) {
             console.log(result);

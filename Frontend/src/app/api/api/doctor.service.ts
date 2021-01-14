@@ -101,6 +101,7 @@ export class DoctorService {
     /**
      * F
      * M
+     * 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
@@ -141,6 +142,83 @@ export class DoctorService {
             this.rows;
             })
     }
+
+    /**
+     * Updates a pet in the store with form data
+     * @param id id that need to be updated
+*      @param body Pet object that needs to be added to the store
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public updateDate(id: string, body: DoctorEntity, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public updateDate(id: string, body: DoctorEntity, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public updateDate(id: string, body: DoctorEntity, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public updateDate(id: string, body: DoctorEntity, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (id === null || id === undefined) {
+            throw new Error('Required parameter username was null or undefined when calling updateUser.');
+        }
+
+        if (body === null || body === undefined) {
+            throw new Error('Required parameter petId was null or undefined when calling updatePetWithForm.');
+        }
+
+
+
+        let headers = this.defaultHeaders;
+
+        // authentication (petstore_auth) required
+        if (this.configuration.accessToken) {
+            const accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers = headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            'application/xml',
+            'application/json'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+            'application/x-www-form-urlencoded'
+        ];
+
+        const canConsumeForm = this.canConsumeForm(consumes);
+
+        let formParams: { append(param: string, value: any): void | HttpParams; };
+        let useForm = false;
+        let convertFormParamsToString = false;
+        if (useForm) {
+            formParams = new FormData();
+        } else {
+            formParams = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
+        }
+
+
+
+        return this.httpClient.put<any>(`${this.basePath}/doctor/update/${encodeURIComponent(String(id))}`,
+        body,
+        {
+            withCredentials: this.configuration.withCredentials,
+            headers: headers,
+            observe: observe,
+            reportProgress: reportProgress
+        }
+        ).map(res=>
+            {
+                this.rows;
+            })
+    }
+
+
+
     
 
     

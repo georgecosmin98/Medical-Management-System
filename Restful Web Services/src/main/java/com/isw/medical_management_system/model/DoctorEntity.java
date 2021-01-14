@@ -23,4 +23,28 @@ public class DoctorEntity extends PersonEntity{
         this.specialization = specialization;
         this.salary = salary;
     }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public String getSpecialization() {
+        return specialization;
+    }
+
+    public int getSalary() {
+        return salary;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+
+    public void setSpecialization(String specialization) {
+        this.specialization = specialization;
+    }
+
+    public void setSalary(int salary) {
+        this.salary = salary;
+    }
 }

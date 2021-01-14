@@ -12,6 +12,7 @@ exports.__esModule = true;
 exports.DoctorService = void 0;
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/common/http");
+var encoder_1 = require("../encoder");
 var variables_1 = require("../variables");
 var configuration_1 = require("../configuration");
 var DoctorService = /** @class */ (function () {
@@ -97,6 +98,56 @@ var DoctorService = /** @class */ (function () {
         var _this = this;
         return this.httpClient["delete"](this.basePath + "/doctor/deleteDoctor/" + encodeURIComponent(String(id)))
             .map(function (res) {
+            _this.rows;
+        });
+    };
+    DoctorService.prototype.updateDate = function (id, body, observe, reportProgress) {
+        var _this = this;
+        if (observe === void 0) { observe = 'body'; }
+        if (reportProgress === void 0) { reportProgress = false; }
+        if (id === null || id === undefined) {
+            throw new Error('Required parameter username was null or undefined when calling updateUser.');
+        }
+        if (body === null || body === undefined) {
+            throw new Error('Required parameter petId was null or undefined when calling updatePetWithForm.');
+        }
+        var headers = this.defaultHeaders;
+        // authentication (petstore_auth) required
+        if (this.configuration.accessToken) {
+            var accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers = headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+        // to determine the Accept header
+        var httpHeaderAccepts = [
+            'application/xml',
+            'application/json'
+        ];
+        var httpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+        // to determine the Content-Type header
+        var consumes = [
+            'application/x-www-form-urlencoded'
+        ];
+        var canConsumeForm = this.canConsumeForm(consumes);
+        var formParams;
+        var useForm = false;
+        var convertFormParamsToString = false;
+        if (useForm) {
+            formParams = new FormData();
+        }
+        else {
+            formParams = new http_1.HttpParams({ encoder: new encoder_1.CustomHttpUrlEncodingCodec() });
+        }
+        return this.httpClient.put(this.basePath + "/doctor/update/" + encodeURIComponent(String(id)), body, {
+            withCredentials: this.configuration.withCredentials,
+            headers: headers,
+            observe: observe,
+            reportProgress: reportProgress
+        }).map(function (res) {
             _this.rows;
         });
     };
