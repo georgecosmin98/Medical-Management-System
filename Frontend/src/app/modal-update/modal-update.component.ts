@@ -11,7 +11,7 @@ import { DoctorService } from '../api/'
 export class ModalUpdateComponent implements OnInit {
   rows: any;
   form: any = {};
-  j: string;
+  j: any;
   
 
   constructor(public activeModal: NgbActiveModal, private doctorService:DoctorService) { }
@@ -27,8 +27,8 @@ export class ModalUpdateComponent implements OnInit {
 }
 
 update(j, f: NgForm) {
-  console.log(this.j);
-  this.doctorService.updateDate(j, f.value).subscribe(() => { })
+  console.log(this.j.id);
+  this.doctorService.updateDate(this.j.id, f.value).subscribe(() => { })
   location.reload();
 }
 

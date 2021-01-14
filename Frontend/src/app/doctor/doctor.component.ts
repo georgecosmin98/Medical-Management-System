@@ -184,14 +184,7 @@ updateWithModal(j){
 
   }
 });
-}
-
-
-  }
-
-  
-
-
+} }
 
 
 export interface PeriodicElement {

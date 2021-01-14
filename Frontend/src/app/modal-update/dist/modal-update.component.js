@@ -23,8 +23,8 @@ var ModalUpdateComponent = /** @class */ (function () {
         });
     };
     ModalUpdateComponent.prototype.update = function (j, f) {
-        console.log(this.j);
-        this.doctorService.updateDate(j, f.value).subscribe(function () { });
+        console.log(this.j.id);
+        this.doctorService.updateDate(this.j.id, f.value).subscribe(function () { });
         location.reload();
     };
     ModalUpdateComponent = __decorate([
