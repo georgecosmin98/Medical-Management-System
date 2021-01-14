@@ -24,7 +24,6 @@ var AuthService = /** @class */ (function () {
         }, httpOptions);
     };
     AuthService.prototype.register = function (user) {
-        console.log(user);
         return this.http.post(AUTH_API + 'users' + '/sign-up', {
             username: user.username,
             password: user.password,

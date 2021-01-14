@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
-
+import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -18,22 +18,28 @@ export class RegisterComponent implements OnInit {
   }
 
 
-  onSubmit() {
+  onSubmit(f: NgForm) {
     
-    this.authService.register(this.form).subscribe(
+    this.authService.register(f.value).subscribe(
       data => {
         console.log(data);
         this.isSuccessful = true;
         this.isSignUpFailed = false;
-        console.log(data);
+        console.log("Succesful?: " +  this.isSuccessful);
+        console.log("Failed?: " +  this.isSignUpFailed );
+        
       },
       err => {
-
         this.errorMessage = err.error.message;
         this.isSignUpFailed = true;
+        console.log("Succesful?: " +  this.errorMessage);
+        console.log("Failed?: " +  this.isSignUpFailed );
       }
     );
   }
+    // this.authService.register(f.value).subscribe(() => { })
+    // //location.reload();
+    // }
 }
 
 

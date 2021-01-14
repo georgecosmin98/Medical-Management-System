@@ -18,16 +18,19 @@ var RegisterComponent = /** @class */ (function () {
     }
     RegisterComponent.prototype.ngOnInit = function () {
     };
-    RegisterComponent.prototype.onSubmit = function () {
+    RegisterComponent.prototype.onSubmit = function (f) {
         var _this = this;
-        this.authService.register(this.form).subscribe(function (data) {
+        this.authService.register(f.value).subscribe(function (data) {
             console.log(data);
             _this.isSuccessful = true;
             _this.isSignUpFailed = false;
-            console.log(data);
+            console.log("Succesful?: " + _this.isSuccessful);
+            console.log("Failed?: " + _this.isSignUpFailed);
         }, function (err) {
             _this.errorMessage = err.error.message;
             _this.isSignUpFailed = true;
+            console.log("Succesful?: " + _this.errorMessage);
+            console.log("Failed?: " + _this.isSignUpFailed);
         });
     };
     RegisterComponent = __decorate([
