@@ -22,10 +22,16 @@ var RegisterComponent = /** @class */ (function () {
         var _this = this;
         this.authService.register(f.value).subscribe(function (data) {
             console.log(data);
-            _this.isSuccessful = true;
-            _this.isSignUpFailed = false;
-            console.log("Succesful?: " + _this.isSuccessful);
-            console.log("Failed?: " + _this.isSignUpFailed);
+            if (data == "CREATED") {
+                _this.isSuccessful = true;
+                _this.isSignUpFailed = false;
+                console.log("Succesful?: " + _this.isSuccessful);
+                console.log("Failed?: " + _this.isSignUpFailed);
+            }
+            else {
+                _this.isSuccessful = false;
+                _this.isSignUpFailed = true;
+            }
         }, function (err) {
             _this.errorMessage = err.error.message;
             _this.isSignUpFailed = true;
