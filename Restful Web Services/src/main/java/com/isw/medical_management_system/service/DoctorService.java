@@ -54,10 +54,7 @@ public class DoctorService {
         search.setDepartment(doctorEntity.getDepartment());
         search.setSpecialization(doctorEntity.getSpecialization());
         search.setSalary(doctorEntity.getSalary());
-
-
-
-
+        
         search = doctorRepository.save(search);
 //        doctorRepository.deleteById(id);
 
