@@ -12,6 +12,10 @@ import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables'
 import { Configuration }                                     from '../configuration';
 import { isNumber } from 'util';
 
+const AUTH_API = 'http://localhost:8080/api/auth/';
+const httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
 
 
 @Injectable()
@@ -221,7 +225,13 @@ export class DoctorService {
 
     
 
-    
+    register(user): Observable<any> {
+        return this.httpClient.post(AUTH_API + 'signup', {
+          username: user.username,
+          email: user.email,
+          password: user.password
+        }, httpOptions);
+      }
 
 
     

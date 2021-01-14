@@ -3,6 +3,9 @@ import { Routes, RouterModule, PreloadingStrategy, PreloadAllModules } from '@an
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 import { DoctorComponent } from './doctor/doctor.component';
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
 
 // -----------------------------------------------------------
 
@@ -13,6 +16,10 @@ const routes: Routes = [
  
   { path: '', pathMatch: 'full', redirectTo: 'home' },
   {path: 'doctor' , component : DoctorComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+
 
 
 

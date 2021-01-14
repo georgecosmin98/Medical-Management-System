@@ -1,6 +1,6 @@
 <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Update data</h4>
-    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <button type="button" class="close" aria-label="Close" (click)="close()">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
@@ -39,7 +39,7 @@
 
 
         <div class="form-group"> 
-            <button  class="btn btn-secondary" aria-label="Close" (click)="close()">Close</button> 
+            <button  class="btn btn-secondary" aria-label="Close"  (click)="close()">Close</button>
             &nbsp;
             <button  class="btn btn-primary">Update data</button>
           </div>

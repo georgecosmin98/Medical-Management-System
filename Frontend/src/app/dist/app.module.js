@@ -24,6 +24,13 @@ var table_1 = require("@angular/material/table");
 var paginator_1 = require("@angular/material/paginator");
 var animations_1 = require("@angular/platform-browser/animations");
 var doctor_component_1 = require("./doctor/doctor.component");
+var modal_content_component_1 = require("./modal-content/modal-content.component");
+var ng_bootstrap_1 = require("@ng-bootstrap/ng-bootstrap");
+var modal_confirm_component_1 = require("./modal-confirm/modal-confirm.component");
+var modal_update_component_1 = require("./modal-update/modal-update.component");
+var login_component_1 = require("./login/login.component");
+var register_component_1 = require("./register/register.component");
+var home_component_1 = require("./home/home.component");
 // ------------------------------------
 var AppModule = /** @class */ (function () {
     function AppModule() {
@@ -34,6 +41,12 @@ var AppModule = /** @class */ (function () {
                 app_component_1.AppComponent,
                 filter_pipe_1.FilterPipe,
                 doctor_component_1.DoctorComponent,
+                modal_content_component_1.ModalContentComponent,
+                modal_confirm_component_1.ModalConfirmComponent,
+                modal_update_component_1.ModalUpdateComponent,
+                login_component_1.LoginComponent,
+                register_component_1.RegisterComponent,
+                home_component_1.HomeComponent,
             ],
             schemas: [core_1.CUSTOM_ELEMENTS_SCHEMA],
             imports: [
@@ -50,7 +63,8 @@ var AppModule = /** @class */ (function () {
                 sort_1.MatSortModule,
                 core_2.MatNativeDateModule,
                 forms_1.ReactiveFormsModule,
-                datepicker_1.MatDatepickerModule
+                datepicker_1.MatDatepickerModule,
+                ng_bootstrap_1.NgbModule
             ],
             entryComponents: [app_component_1.AppComponent],
             bootstrap: [app_component_1.AppComponent],

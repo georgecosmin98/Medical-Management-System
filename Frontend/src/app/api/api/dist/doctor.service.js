@@ -15,6 +15,10 @@ var http_1 = require("@angular/common/http");
 var encoder_1 = require("../encoder");
 var variables_1 = require("../variables");
 var configuration_1 = require("../configuration");
+var AUTH_API = 'http://localhost:8080/api/auth/';
+var httpOptions = {
+    headers: new http_1.HttpHeaders({ 'Content-Type': 'application/json' })
+};
 var DoctorService = /** @class */ (function () {
     function DoctorService(httpClient, basePath, configuration) {
         this.httpClient = httpClient;
@@ -150,6 +154,13 @@ var DoctorService = /** @class */ (function () {
         }).map(function (res) {
             _this.rows;
         });
+    };
+    DoctorService.prototype.register = function (user) {
+        return this.httpClient.post(AUTH_API + 'signup', {
+            username: user.username,
+            email: user.email,
+            password: user.password
+        }, httpOptions);
     };
     DoctorService = __decorate([
         core_1.Injectable(),
