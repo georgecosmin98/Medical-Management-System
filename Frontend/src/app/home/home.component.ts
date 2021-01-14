@@ -53,4 +53,8 @@ export class HomeComponent implements OnInit {
     window.location.reload();
   }
 
+  signOut(): void {
+    window.sessionStorage.clear();
+  }
+
 }

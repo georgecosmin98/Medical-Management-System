@@ -44,6 +44,9 @@ var HomeComponent = /** @class */ (function () {
     HomeComponent.prototype.reloadPage = function () {
         window.location.reload();
     };
+    HomeComponent.prototype.signOut = function () {
+        window.sessionStorage.clear();
+    };
     HomeComponent = __decorate([
         core_1.Component({
             selector: 'app-home',

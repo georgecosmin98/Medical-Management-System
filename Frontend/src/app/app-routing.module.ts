@@ -14,7 +14,7 @@ import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
  
-  { path: '', pathMatch: 'full', redirectTo: 'home' },
+  { path: '', pathMatch: 'full', redirectTo: 'login' },
   {path: 'doctor' , component : DoctorComponent },
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },

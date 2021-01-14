@@ -18,9 +18,9 @@ var RegisterComponent = /** @class */ (function () {
     }
     RegisterComponent.prototype.ngOnInit = function () {
     };
-    RegisterComponent.prototype.onSubmit = function (f) {
+    RegisterComponent.prototype.onSubmit = function () {
         var _this = this;
-        this.authService.register(f.value).subscribe(function (data) {
+        this.authService.register(this.form).subscribe(function (data) {
             console.log(data);
             _this.isSuccessful = true;
             _this.isSignUpFailed = false;
@@ -43,3 +43,6 @@ var RegisterComponent = /** @class */ (function () {
     return RegisterComponent;
 }());
 exports.RegisterComponent = RegisterComponent;
+// onSubmit(f: NgForm) {
+//   this.authService.register(f.value).subscribe(
+//     data => {

@@ -15,6 +15,7 @@ var TokenStorageService = /** @class */ (function () {
     }
     TokenStorageService.prototype.signOut = function () {
         window.sessionStorage.clear();
+        window.alert("You have been successfully signed out!");
     };
     TokenStorageService.prototype.saveToken = function (token) {
         window.sessionStorage.removeItem(TOKEN_KEY);

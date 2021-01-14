@@ -18,9 +18,9 @@ export class RegisterComponent implements OnInit {
   }
 
 
-  onSubmit(f: NgForm) {
+  onSubmit() {
     
-    this.authService.register(f.value).subscribe(
+    this.authService.register(this.form).subscribe(
       data => {
         console.log(data);
         this.isSuccessful = true;
@@ -41,5 +41,11 @@ export class RegisterComponent implements OnInit {
     // //location.reload();
     // }
 }
+
+
+// onSubmit(f: NgForm) {
+    
+//   this.authService.register(f.value).subscribe(
+//     data => {
 
 
