@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
         this.roles = this.tokenStorage.getUser().roles;
         
         if(this.isLoggedIn){
-          this.router.navigate(['/home'])
+          this.router.navigate(['/doctor'])
           
         }
       
