@@ -11,6 +11,7 @@ export class TokenStorageService {
   constructor() { }
   signOut(): void {
     window.sessionStorage.clear();
+    window.alert("You have been successfully signed out!");
   }
 
   public saveToken(token: string): void {
