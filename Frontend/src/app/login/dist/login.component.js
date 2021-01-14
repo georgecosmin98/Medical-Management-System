@@ -35,7 +35,7 @@ var LoginComponent = /** @class */ (function () {
             _this.isLoggedIn = true;
             _this.roles = _this.tokenStorage.getUser().roles;
             if (_this.isLoggedIn) {
-                _this.router.navigate(['/home']);
+                _this.router.navigate(['/doctor']);
             }
         }, function (err) {
             _this.errorMessage = err.error.message;
