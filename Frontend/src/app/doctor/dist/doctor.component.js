@@ -16,11 +16,12 @@ require("rxjs/Rx");
 var modal_confirm_component_1 = require("../modal-confirm/modal-confirm.component");
 var modal_update_component_1 = require("../modal-update/modal-update.component");
 var DoctorComponent = /** @class */ (function () {
-    function DoctorComponent(formBuilder, doctService, router, modalService) {
+    function DoctorComponent(formBuilder, doctService, router, modalService, token) {
         this.formBuilder = formBuilder;
         this.doctService = doctService;
         this.router = router;
         this.modalService = modalService;
+        this.token = token;
         this.form = {};
         this.displayedColumns = ['id', 'fullName', 'emailAddress', 'phoneNumber', 'department', 'specialization', 'salary', 'delete', 'update'];
         this.user = {
@@ -31,6 +32,10 @@ var DoctorComponent = /** @class */ (function () {
             specialization: '',
             salary: ''
         };
+        this.isLoggedIn = false;
+        this.isLoginFailed = false;
+        this.errorMessage = '';
+        this.roles = [];
     }
     DoctorComponent.prototype.ngOnInit = function () {
         var _this = this;

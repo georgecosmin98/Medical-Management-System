@@ -11,6 +11,7 @@ import { ModalContentComponent } from '../modal-content/modal-content.component'
 import 'rxjs/Rx';
 import { ModalConfirmComponent} from '../modal-confirm/modal-confirm.component';
 import { ModalUpdateComponent } from '../modal-update/modal-update.component';
+import { TokenStorageService } from '../services/token-storage.service'
 
 
 @Component({
@@ -33,6 +34,7 @@ export class DoctorComponent implements OnInit {
 
 
 
+
   public user = {
     fullName: '',
     emailAddress : '',
@@ -45,11 +47,18 @@ export class DoctorComponent implements OnInit {
   id: string;
 
 
+  isLoggedIn = false;
+  isLoginFailed = false;
+  errorMessage = '';
+  roles: string[] = [];
 
 
 
 
-  constructor(private formBuilder : FormBuilder, private doctService : DoctorService , public router : Router, public modalService: NgbModal,) { 
+
+
+
+  constructor(private formBuilder : FormBuilder, private doctService : DoctorService , public router : Router, public modalService: NgbModal, private token: TokenStorageService) { 
 
   }
   

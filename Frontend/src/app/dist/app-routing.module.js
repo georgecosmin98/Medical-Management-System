@@ -16,7 +16,7 @@ var login_component_1 = require("./login/login.component");
 var home_component_1 = require("./home/home.component");
 // -----------------------------------------------------------
 var routes = [
-    { path: '', pathMatch: 'full', redirectTo: 'login' },
+    { path: '', pathMatch: 'full', redirectTo: 'home' },
     { path: 'doctor', component: doctor_component_1.DoctorComponent },
     { path: 'home', component: home_component_1.HomeComponent },
     { path: 'login', component: login_component_1.LoginComponent },

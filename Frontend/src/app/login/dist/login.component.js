@@ -35,15 +35,15 @@ var LoginComponent = /** @class */ (function () {
             _this.isLoggedIn = true;
             _this.roles = _this.tokenStorage.getUser().roles;
             if (_this.isLoggedIn) {
-                _this.router.navigate(['/doctor']);
+                // this.router.navigate(['/home'])
+                // location.reload();
+                window.alert("You was successfully log-in!");
+                window.location.reload();
             }
         }, function (err) {
             _this.errorMessage = err.error.message;
             _this.isLoginFailed = true;
         });
-    };
-    LoginComponent.prototype.reloadPage = function () {
-        window.location.reload();
     };
     LoginComponent = __decorate([
         core_1.Component({

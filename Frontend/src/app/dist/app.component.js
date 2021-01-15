@@ -9,9 +9,19 @@ exports.__esModule = true;
 exports.AppComponent = void 0;
 var core_1 = require("@angular/core");
 var AppComponent = /** @class */ (function () {
-    function AppComponent() {
-        this.title = 'AdCost';
+    function AppComponent(tokenStorageService) {
+        this.tokenStorageService = tokenStorageService;
+        this.isLoggedIn = false;
+        this.showAdminBoard = false;
+        this.showModeratorBoard = false;
     }
+    AppComponent.prototype.ngOnInit = function () {
+        this.isLoggedIn = !!this.tokenStorageService.getToken();
+    };
+    AppComponent.prototype.logout = function () {
+        this.tokenStorageService.signOut();
+        window.location.reload();
+    };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'app-root',

@@ -30,6 +30,7 @@ delete1(id){
       this.getData()
      
       console.log("delete");
+      window.alert("It was successfully deleted!");
       location.reload();
     })
 

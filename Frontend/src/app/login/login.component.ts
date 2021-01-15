@@ -36,8 +36,10 @@ export class LoginComponent implements OnInit {
         this.roles = this.tokenStorage.getUser().roles;
         
         if(this.isLoggedIn){
-          this.router.navigate(['/doctor'])
-          
+          // this.router.navigate(['/home'])
+          // location.reload();
+          window.alert("You was successfully log-in!");
+          window.location.reload();
         }
       
       },
@@ -49,9 +51,9 @@ export class LoginComponent implements OnInit {
   }
   
 
-  reloadPage() {
-    window.location.reload();
-  }
+  // reloadPage() {
+  //   window.location.reload();
+  // }
 }
 
 
