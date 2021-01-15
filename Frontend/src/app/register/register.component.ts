@@ -23,11 +23,17 @@ export class RegisterComponent implements OnInit {
     this.authService.register(this.form).subscribe(
       data => {
         console.log(data);
+        if(data=="CREATED"){
         this.isSuccessful = true;
         this.isSignUpFailed = false;
         console.log("Succesful?: " +  this.isSuccessful);
         console.log("Failed?: " +  this.isSignUpFailed );
-        
+        }
+        else
+        {
+          this.isSuccessful = false;
+          this.isSignUpFailed = true;
+        }
       },
       err => {
         this.errorMessage = err.error.message;
