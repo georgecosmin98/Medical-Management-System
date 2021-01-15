@@ -4,10 +4,10 @@ import { MatTableDataSource } from '@angular/material/table';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Component, OnInit, ViewChild, AfterViewInit, Type, Input, ViewEncapsulation } from '@angular/core';
-import { DoctorService } from '../api/api/doctor.service'
+import { PacientService } from '../api/api/pacient.service'
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ModalContentComponent } from '../modal-content/modal-content.component'
+import { ModalPacientAddComponent } from '../modal-pacient-add/modal-pacient-add.component';
 import 'rxjs/Rx';
 import { ModalConfirmComponent } from '../modal-confirm/modal-confirm.component';
 import { ModalUpdateComponent } from '../modal-update/modal-update.component';
@@ -15,15 +15,15 @@ import { TokenStorageService } from '../services/token-storage.service'
 
 
 @Component({
-  selector: 'app-doctor',
-  templateUrl: './doctor.component.html',
-  styleUrls: ['./doctor.component.scss']
+  selector: 'app-pacient',
+  templateUrl: './pacient.component.html',
+  styleUrls: ['./pacient.component.scss']
 })
-export class DoctorComponent implements OnInit {
+export class PacientComponent implements OnInit {
 
 
   form: any = {};
-  displayedColumns: string[] = ['id', 'fullName', 'emailAddress', 'phoneNumber', 'department', 'specialization', 'salary', 'delete', 'update'];
+  displayedColumns: string[] = ['id', 'fullName', 'phoneNumber', 'emailAddress', 'address', 'age', 'sex', 'prescription', 'delete', 'update'];
   values: PeriodicElement[];
   dataSource: MatTableDataSource<PeriodicElement>;
   currentUser: any;
@@ -37,11 +37,12 @@ export class DoctorComponent implements OnInit {
 
   public user = {
     fullName: '',
-    emailAddress: '',
     phoneNumber: '',
-    department: '',
-    specialization: '',
-    salary: ''
+    emailAddress: '',
+    address: '',
+    age: '',
+    sex: '',
+    prescription: ''
   }
 
   id: string;
@@ -52,28 +53,14 @@ export class DoctorComponent implements OnInit {
   errorMessage = '';
   roles: string[] = [];
 
+  constructor(private formBuilder: FormBuilder, private pactientService: PacientService, public router: Router, public modalService: NgbModal, private token: TokenStorageService) { }
 
-
-
-
-
-
-  constructor(private formBuilder: FormBuilder, private doctService: DoctorService, public router: Router, public modalService: NgbModal, private token: TokenStorageService) {
-
-  }
-
-
-  @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-
-
-
-
-
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngOnInit(): void {
 
-    this.doctService.doctorSearchAll().subscribe((res) => {
+    this.pactientService.pacientSearchAll().subscribe((res) => {
       //  this.dateFromBackend = res.map(object => object.data)
 
 
@@ -87,30 +74,18 @@ export class DoctorComponent implements OnInit {
 
     })
 
-
   }
 
-  register(f: NgForm) {
-    this.doctService.add(f.value).subscribe(() => { })
-    location.reload();
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 
-  // ngAfterViewInit() {
-  //   this.dataSource.paginator = this.paginator;
-  // }
-
-  openModal() {
-    const modalRef = this.modalService.open(ModalContentComponent);
-    modalRef.componentInstance.user = this.user;
-    modalRef.result.then((result) => {
-      if (result) {
-        console.log(result);
-      }
-    });
-    // modalRef.componentInstance.passEntry.subscribe((receivedEntry) => {
-    //   console.log(receivedEntry);
-    // })
-  }
 
 
   searchName() {
@@ -129,24 +104,28 @@ export class DoctorComponent implements OnInit {
 
   }
 
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
 
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
+
+
+  openModal() {
+    const modalRef = this.modalService.open(ModalPacientAddComponent);
+    modalRef.componentInstance.user = this.user;
+    modalRef.result.then((result) => {
+      if (result) {
+        console.log(result);
+      }
+    });
+
   }
 
 
-
   getData() {
-    this.doctService.doctorSearchAll().subscribe(res => {
+    this.pactientService.pacientSearchAll().subscribe(res => {
       this.rows = res;
     })
   }
   delete1(j) {
-    this.doctService.deleteData(j).subscribe(res => {
+    this.pactientService.deleteData(j).subscribe(res => {
       this.getData()
       console.log("delete");
       location.reload();
@@ -163,13 +142,6 @@ export class DoctorComponent implements OnInit {
       console.log(result);
       if (result) {
         console.log(result);
-        //   this.doctService.deleteData(j).subscribe(res=>
-        // {
-        //     this.getData()
-        //     console.log("delete");
-        //   // location.reload();
-        // })
-
       }
     });
   }
@@ -182,25 +154,20 @@ export class DoctorComponent implements OnInit {
       console.log(result);
       if (result) {
         console.log(result);
-        //   this.doctService.deleteData(j).subscribe(res=>
-        // {
-        //     this.getData()
-        //     console.log("delete");
-        //   // location.reload();
-        // })
-
       }
     });
   }
 }
 
 
+
 export interface PeriodicElement {
   id?: string;
   fullName?: string;
-  emailAdress?: string;
   phoneNumber?: string;
-  department?: string;
-  specialization?: string;
-  salary?: number;
+  emailAdress?: string;
+  address?: string;
+  age?: number;
+  sex?: string;
+  prescription?: string;
 }

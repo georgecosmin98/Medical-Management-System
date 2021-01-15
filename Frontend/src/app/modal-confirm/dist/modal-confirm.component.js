@@ -27,7 +27,6 @@ var ModalConfirmComponent = /** @class */ (function () {
         this.doctorService.deleteData(this.j).subscribe(function (res) {
             _this.getData();
             console.log("delete");
-            window.alert("It was successfully deleted!");
             location.reload();
         });
     };

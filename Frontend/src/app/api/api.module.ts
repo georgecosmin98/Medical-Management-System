@@ -3,6 +3,7 @@ import { Configuration } from './configuration';
 import { HttpClient } from '@angular/common/http';
 
 import { DoctorService } from './api/doctor.service';
+import { PacientService } from './api/pacient.service';
 
 
 @NgModule({
@@ -11,6 +12,7 @@ import { DoctorService } from './api/doctor.service';
   exports:      [],
   providers: [
     DoctorService,
+    PacientService,
  ]
 })
 export class ApiModule {

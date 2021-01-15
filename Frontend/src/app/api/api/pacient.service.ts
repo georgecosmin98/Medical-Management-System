@@ -6,7 +6,7 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs';
 
-import { DoctorEntity } from '../model/doctor';
+import { PacientEntity } from '../model/pacient';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
@@ -16,7 +16,7 @@ import { isNumber } from 'util';
 
 
 @Injectable()
-export class DoctorService {
+export class PacientService {
 
     protected basePath = 'http://localhost:8080';
     public defaultHeaders = new HttpHeaders();
@@ -48,18 +48,16 @@ export class DoctorService {
     }
 
 
-
-
-    /**
+        /**
      * 
      * @param body Pet object that needs to be added to the store
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public add(body: DoctorEntity, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public add(body: DoctorEntity, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public add(body: DoctorEntity, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public add(body: DoctorEntity, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public addPacient(body: PacientEntity, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public addPacient(body: PacientEntity, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public addPacient(body: PacientEntity, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public addPacient(body: PacientEntity, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling add.');
@@ -85,7 +83,7 @@ export class DoctorService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.post<any>(`${this.basePath}/doctor/addDoctor`,
+        return this.httpClient.post<any>(`${this.basePath}/patient/addPatient`,
             body,
             {
                 withCredentials: this.configuration.withCredentials,
@@ -99,6 +97,8 @@ export class DoctorService {
 
 
 
+
+
     /**
      * F
      * M
@@ -106,10 +106,10 @@ export class DoctorService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public doctorSearchAll(observe?: 'body', reportProgress?: boolean): Observable<Array<DoctorEntity>>;
-    public doctorSearchAll(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<DoctorEntity>>>;
-    public doctorSearchAll(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<DoctorEntity>>>;
-    public doctorSearchAll(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public pacientSearchAll(observe?: 'body', reportProgress?: boolean): Observable<Array<PacientEntity>>;
+    public pacientSearchAll(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<PacientEntity>>>;
+    public pacientSearchAll(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<PacientEntity>>>;
+    public pacientSearchAll(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
 
@@ -125,7 +125,7 @@ export class DoctorService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<Array<DoctorEntity>>(`${this.basePath}/doctor/listOfDoctors`,
+        return this.httpClient.get<Array<PacientEntity>>(`${this.basePath}/patient/listOfPatient`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -137,24 +137,25 @@ export class DoctorService {
 
 
     deleteData(id){
-        return this.httpClient.delete(`${this.basePath}/doctor/deleteDoctor/${encodeURIComponent(String(id))}`)
+        return this.httpClient.delete(`${this.basePath}/patient/deletePatient/${encodeURIComponent(String(id))}`)
         .map(res=>
             {
             this.rows;
             })
     }
 
-    /**
+
+        /**
      * Updates a pet in the store with form data
      * @param id id that need to be updated
 *      @param body Pet object that needs to be added to the store
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateDate(id: string, body: DoctorEntity, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public updateDate(id: string, body: DoctorEntity, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public updateDate(id: string, body: DoctorEntity, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public updateDate(id: string, body: DoctorEntity, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public updatePacient(id: string, body: PacientEntity, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public updatePacient(id: string, body: PacientEntity, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public updatePacient(id: string, body: PacientEntity, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public updatePacient(id: string, body: PacientEntity, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (id === null || id === undefined) {
             throw new Error('Required parameter username was null or undefined when calling updateUser.');
@@ -204,7 +205,7 @@ export class DoctorService {
 
 
 
-        return this.httpClient.put<any>(`${this.basePath}/doctor/update/${encodeURIComponent(String(id))}`,
+        return this.httpClient.put<any>(`${this.basePath}/patient/updatePatient/${encodeURIComponent(String(id))}`,
         body,
         {
             withCredentials: this.configuration.withCredentials,
@@ -219,6 +220,5 @@ export class DoctorService {
     }
 
 
-
-    
 }
+    

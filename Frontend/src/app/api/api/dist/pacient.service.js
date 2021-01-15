@@ -9,14 +9,14 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 exports.__esModule = true;
-exports.DoctorService = void 0;
+exports.PacientService = void 0;
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/common/http");
 var encoder_1 = require("../encoder");
 var variables_1 = require("../variables");
 var configuration_1 = require("../configuration");
-var DoctorService = /** @class */ (function () {
-    function DoctorService(httpClient, basePath, configuration) {
+var PacientService = /** @class */ (function () {
+    function PacientService(httpClient, basePath, configuration) {
         this.httpClient = httpClient;
         this.basePath = 'http://localhost:8080';
         this.defaultHeaders = new http_1.HttpHeaders();
@@ -33,7 +33,7 @@ var DoctorService = /** @class */ (function () {
      * @param consumes string[] mime-types
      * @return true: consumes contains 'multipart/form-data', false: otherwise
      */
-    DoctorService.prototype.canConsumeForm = function (consumes) {
+    PacientService.prototype.canConsumeForm = function (consumes) {
         var form = 'multipart/form-data';
         for (var _i = 0, consumes_1 = consumes; _i < consumes_1.length; _i++) {
             var consume = consumes_1[_i];
@@ -43,7 +43,7 @@ var DoctorService = /** @class */ (function () {
         }
         return false;
     };
-    DoctorService.prototype.add = function (body, observe, reportProgress) {
+    PacientService.prototype.addPacient = function (body, observe, reportProgress) {
         if (observe === void 0) { observe = 'body'; }
         if (reportProgress === void 0) { reportProgress = false; }
         if (body === null || body === undefined) {
@@ -66,14 +66,14 @@ var DoctorService = /** @class */ (function () {
         if (httpContentTypeSelected != undefined) {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
-        return this.httpClient.post(this.basePath + "/doctor/addDoctor", body, {
+        return this.httpClient.post(this.basePath + "/patient/addPatient", body, {
             withCredentials: this.configuration.withCredentials,
             headers: headers,
             observe: observe,
             reportProgress: reportProgress
         });
     };
-    DoctorService.prototype.doctorSearchAll = function (observe, reportProgress) {
+    PacientService.prototype.pacientSearchAll = function (observe, reportProgress) {
         if (observe === void 0) { observe = 'body'; }
         if (reportProgress === void 0) { reportProgress = false; }
         var headers = this.defaultHeaders;
@@ -87,21 +87,21 @@ var DoctorService = /** @class */ (function () {
         }
         // to determine the Content-Type header
         var consumes = [];
-        return this.httpClient.get(this.basePath + "/doctor/listOfDoctors", {
+        return this.httpClient.get(this.basePath + "/patient/listOfPatient", {
             withCredentials: this.configuration.withCredentials,
             headers: headers,
             observe: observe,
             reportProgress: reportProgress
         });
     };
-    DoctorService.prototype.deleteData = function (id) {
+    PacientService.prototype.deleteData = function (id) {
         var _this = this;
-        return this.httpClient["delete"](this.basePath + "/doctor/deleteDoctor/" + encodeURIComponent(String(id)))
+        return this.httpClient["delete"](this.basePath + "/patient/deletePatient/" + encodeURIComponent(String(id)))
             .map(function (res) {
             _this.rows;
         });
     };
-    DoctorService.prototype.updateDate = function (id, body, observe, reportProgress) {
+    PacientService.prototype.updatePacient = function (id, body, observe, reportProgress) {
         var _this = this;
         if (observe === void 0) { observe = 'body'; }
         if (reportProgress === void 0) { reportProgress = false; }
@@ -142,7 +142,7 @@ var DoctorService = /** @class */ (function () {
         else {
             formParams = new http_1.HttpParams({ encoder: new encoder_1.CustomHttpUrlEncodingCodec() });
         }
-        return this.httpClient.put(this.basePath + "/doctor/update/" + encodeURIComponent(String(id)), body, {
+        return this.httpClient.put(this.basePath + "/patient/updatePatient/" + encodeURIComponent(String(id)), body, {
             withCredentials: this.configuration.withCredentials,
             headers: headers,
             observe: observe,
@@ -151,10 +151,10 @@ var DoctorService = /** @class */ (function () {
             _this.rows;
         });
     };
-    DoctorService = __decorate([
+    PacientService = __decorate([
         core_1.Injectable(),
         __param(1, core_1.Optional()), __param(1, core_1.Inject(variables_1.BASE_PATH)), __param(2, core_1.Optional())
-    ], DoctorService);
-    return DoctorService;
+    ], PacientService);
+    return PacientService;
 }());
-exports.DoctorService = DoctorService;
+exports.PacientService = PacientService;

@@ -14,6 +14,7 @@ var doctor_component_1 = require("./doctor/doctor.component");
 var register_component_1 = require("./register/register.component");
 var login_component_1 = require("./login/login.component");
 var home_component_1 = require("./home/home.component");
+var pacient_component_1 = require("./pacient/pacient.component");
 // -----------------------------------------------------------
 var routes = [
     { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -21,6 +22,9 @@ var routes = [
     { path: 'home', component: home_component_1.HomeComponent },
     { path: 'login', component: login_component_1.LoginComponent },
     { path: 'register', component: register_component_1.RegisterComponent },
+    { path: 'pacient', component: pacient_component_1.PacientComponent }
+    // -----------------------------------------------------
+    // {path: '', redirectTo: '/home'}
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {

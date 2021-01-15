@@ -23,7 +23,7 @@ export class ModalContentComponent implements OnInit {
     this.doctorService.add(f.value).subscribe(() => { })
     location.reload();
   }
-
+//
 }
 
 

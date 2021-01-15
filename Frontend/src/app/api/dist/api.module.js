@@ -13,6 +13,7 @@ exports.ApiModule = void 0;
 var core_1 = require("@angular/core");
 var configuration_1 = require("./configuration");
 var doctor_service_1 = require("./api/doctor.service");
+var pacient_service_1 = require("./api/pacient.service");
 var ApiModule = /** @class */ (function () {
     function ApiModule(parentModule, http) {
         if (parentModule) {
@@ -38,6 +39,7 @@ var ApiModule = /** @class */ (function () {
             exports: [],
             providers: [
                 doctor_service_1.DoctorService,
+                pacient_service_1.PacientService,
             ]
         }),
         __param(0, core_1.Optional()), __param(0, core_1.SkipSelf()),
