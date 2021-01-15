@@ -20,12 +20,12 @@ public class PatientEntity extends PersonEntity {
     private String address;
     private int age;
     private String sex;
-    @OneToMany(cascade={CascadeType.ALL})
-    @Fetch(FetchMode.JOIN)
-    private List<PrescriptionEntity> prescription;
-
+    //@OneToMany(cascade={CascadeType.ALL})
+    //@Fetch(FetchMode.JOIN)
+    //private List<PrescriptionEntity> prescription;
+    private String prescription;
     @Builder
-    public PatientEntity(String id, String fullName, String phoneNumber, String emailAddress, String address, int age, String sex, List<PrescriptionEntity> prescription) {
+    public PatientEntity(String id, String fullName, String phoneNumber, String emailAddress, String address, int age, String sex, String prescription) {
         super(id, fullName, phoneNumber, emailAddress);
         this.address = address;
         this.age = age;
