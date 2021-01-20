@@ -1,5 +1,6 @@
 package com.isw.medical_management_system.controller;
 
+import com.isw.medical_management_system.model.DoctorEntity;
 import com.isw.medical_management_system.model.PatientEntity;
 import com.isw.medical_management_system.service.PatientService;
 import org.springframework.http.HttpStatus;
@@ -34,10 +35,17 @@ public class PatientController {
         patientService.deleteById(id);
     }
 
-    @PutMapping("/updatePatient/{id}")
+//    @PutMapping("/updatePatient/{id}")
+//    @ResponseStatus(HttpStatus.OK)
+//    public PatientEntity updatePatient(@RequestBody PatientEntity patientEntity, @PathVariable String id)
+//    {
+//        return patientService.updatePatient(patientEntity, id);
+//    }
+
+    @PutMapping(value = "/updatePatient/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public PatientEntity updatePatient(@RequestBody PatientEntity patientEntity, @PathVariable String id)
-    {
-        return patientService.updatePatient(patientEntity, id);
+    public PatientEntity updatePatient(@PathVariable String id, @RequestBody PatientEntity patientEntity) {
+        return patientService.updatePatient(id, patientEntity);
     }
+
 }

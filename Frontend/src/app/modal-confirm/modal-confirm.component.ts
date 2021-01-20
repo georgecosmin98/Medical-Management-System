@@ -32,6 +32,6 @@ delete1(id){
       console.log("delete");
       location.reload();
     })
-
+//
 }
 }

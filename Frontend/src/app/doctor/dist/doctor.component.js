@@ -39,6 +39,7 @@ var DoctorComponent = /** @class */ (function () {
     }
     DoctorComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.currentUser = this.token.getUser();
         this.doctService.doctorSearchAll().subscribe(function (res) {
             //  this.dateFromBackend = res.map(object => object.data)
             // console.log(this.dateFromBackend)

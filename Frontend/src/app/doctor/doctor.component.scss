@@ -93,3 +93,43 @@ table {
 .excel{
   position: relative;
 }
+
+
+// ----------------------------------------------------
+
+
+
+h1
+{
+  text-align: center;
+  color: #555 !important;
+  padding-bottom: 10px;
+}
+h1::after{
+  content: '';
+  background: #007bff;
+  display: block;
+  height: 3px;
+  width: 170px;
+  margin: 20px auto 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+// ---------------------------
+  
+
+
+
+
+
+

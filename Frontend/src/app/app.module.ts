@@ -39,6 +39,8 @@ import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { PacientComponent } from './pacient/pacient.component';
 import { ModalPacientAddComponent } from './modal-pacient-add/modal-pacient-add.component';
+import { ModalPacientDeleteComponent } from './modal-pacient-delete/modal-pacient-delete.component';
+import { ModalPacientUpdateComponent } from './modal-pacient-update/modal-pacient-update.component';
 
 
 
@@ -65,6 +67,8 @@ import { ModalPacientAddComponent } from './modal-pacient-add/modal-pacient-add.
     HomeComponent,
     PacientComponent,
     ModalPacientAddComponent,
+    ModalPacientDeleteComponent,
+    ModalPacientUpdateComponent,
 
 
 

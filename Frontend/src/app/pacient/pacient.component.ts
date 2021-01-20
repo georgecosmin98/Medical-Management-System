@@ -9,9 +9,9 @@ import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalPacientAddComponent } from '../modal-pacient-add/modal-pacient-add.component';
 import 'rxjs/Rx';
-import { ModalConfirmComponent } from '../modal-confirm/modal-confirm.component';
-import { ModalUpdateComponent } from '../modal-update/modal-update.component';
-import { TokenStorageService } from '../services/token-storage.service'
+import { ModalPacientDeleteComponent } from '../modal-pacient-delete/modal-pacient-delete.component';
+import { TokenStorageService } from '../services/token-storage.service';
+import { ModalPacientUpdateComponent } from '../modal-pacient-update/modal-pacient-update.component';
 
 
 @Component({
@@ -59,7 +59,7 @@ export class PacientComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngOnInit(): void {
-
+    this.currentUser = this.token.getUser();
     this.pactientService.pacientSearchAll().subscribe((res) => {
       //  this.dateFromBackend = res.map(object => object.data)
 
@@ -134,9 +134,9 @@ export class PacientComponent implements OnInit {
   }
 
 
-  deleteWithModal(j) {
+  deleteModalPacient(j) {
     console.log(j);
-    const modalRef = this.modalService.open(ModalConfirmComponent);
+    const modalRef = this.modalService.open(ModalPacientDeleteComponent);
     modalRef.componentInstance.j = j;
     modalRef.result.then((result) => {
       console.log(result);
@@ -146,9 +146,9 @@ export class PacientComponent implements OnInit {
     });
   }
 
-  updateWithModal(j) {
+  updateModalPacient(j) {
     console.log(j);
-    const modalRef = this.modalService.open(ModalUpdateComponent);
+    const modalRef = this.modalService.open(ModalPacientUpdateComponent);
     modalRef.componentInstance.j = j;
     modalRef.result.then((result) => {
       console.log(result);

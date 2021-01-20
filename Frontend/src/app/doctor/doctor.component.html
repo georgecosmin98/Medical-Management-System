@@ -1,4 +1,20 @@
-<div class="container">
+<html>
+
+<body>
+
+    <section id="contact">
+        <div class="container">
+            <h1>Doctor</h1>
+        </div>
+    </section>
+
+</body>
+
+</html>
+
+
+
+<div class="container" *ngIf="currentUser; else loggedOut">
   <div class="active-pink-3 active-pink-4 mb-4">
     <mat-form-field>
       <mat-label></mat-label>
@@ -99,3 +115,7 @@
     <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
   </div>
 </div>
+
+<ng-template #loggedOut>
+  Please login.
+</ng-template>

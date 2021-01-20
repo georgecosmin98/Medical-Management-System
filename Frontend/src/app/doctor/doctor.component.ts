@@ -72,6 +72,7 @@ export class DoctorComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.currentUser = this.token.getUser();
 
     this.doctService.doctorSearchAll().subscribe((res) => {
       //  this.dateFromBackend = res.map(object => object.data)

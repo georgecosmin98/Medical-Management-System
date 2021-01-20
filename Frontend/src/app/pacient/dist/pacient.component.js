@@ -13,8 +13,8 @@ var table_1 = require("@angular/material/table");
 var core_1 = require("@angular/core");
 var modal_pacient_add_component_1 = require("../modal-pacient-add/modal-pacient-add.component");
 require("rxjs/Rx");
-var modal_confirm_component_1 = require("../modal-confirm/modal-confirm.component");
-var modal_update_component_1 = require("../modal-update/modal-update.component");
+var modal_pacient_delete_component_1 = require("../modal-pacient-delete/modal-pacient-delete.component");
+var modal_pacient_update_component_1 = require("../modal-pacient-update/modal-pacient-update.component");
 var PacientComponent = /** @class */ (function () {
     function PacientComponent(formBuilder, pactientService, router, modalService, token) {
         this.formBuilder = formBuilder;
@@ -40,6 +40,7 @@ var PacientComponent = /** @class */ (function () {
     }
     PacientComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.currentUser = this.token.getUser();
         this.pactientService.pacientSearchAll().subscribe(function (res) {
             //  this.dateFromBackend = res.map(object => object.data)
             // console.log(this.dateFromBackend)
@@ -94,9 +95,9 @@ var PacientComponent = /** @class */ (function () {
             location.reload();
         });
     };
-    PacientComponent.prototype.deleteWithModal = function (j) {
+    PacientComponent.prototype.deleteModalPacient = function (j) {
         console.log(j);
-        var modalRef = this.modalService.open(modal_confirm_component_1.ModalConfirmComponent);
+        var modalRef = this.modalService.open(modal_pacient_delete_component_1.ModalPacientDeleteComponent);
         modalRef.componentInstance.j = j;
         modalRef.result.then(function (result) {
             console.log(result);
@@ -105,9 +106,9 @@ var PacientComponent = /** @class */ (function () {
             }
         });
     };
-    PacientComponent.prototype.updateWithModal = function (j) {
+    PacientComponent.prototype.updateModalPacient = function (j) {
         console.log(j);
-        var modalRef = this.modalService.open(modal_update_component_1.ModalUpdateComponent);
+        var modalRef = this.modalService.open(modal_pacient_update_component_1.ModalPacientUpdateComponent);
         modalRef.componentInstance.j = j;
         modalRef.result.then(function (result) {
             console.log(result);
