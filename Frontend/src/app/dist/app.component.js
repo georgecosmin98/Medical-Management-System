@@ -23,11 +23,11 @@ var AppComponent = /** @class */ (function () {
     AppComponent.prototype.ngOnInit = function () {
         this.isLoggedIn = !!this.tokenStorageService.getToken();
         console.log(this.tokenStorageService.getUser().role);
-        if (this.tokenStorageService.getUser().role == 'administrator') {
+        if (this.tokenStorageService.getUser().role == '[administrator]') {
             this.isAdmin = true;
             this.isDoctor = false;
         }
-        else if (this.tokenStorageService.getUser().role == 'doctor') {
+        else if (this.tokenStorageService.getUser().role == '[doctor]') {
             this.isAdmin = false;
             this.isDoctor = true;
         }

@@ -27,11 +27,11 @@ export class AppComponent implements OnInit{
 
     console.log(this.tokenStorageService.getUser().role);
 
-    if (this.tokenStorageService.getUser().role == 'administrator') {
+    if (this.tokenStorageService.getUser().role == '[administrator]') {
       this.isAdmin = true;
       this.isDoctor = false;
     }
-    else if (this.tokenStorageService.getUser().role == 'doctor') {
+    else if (this.tokenStorageService.getUser().role == '[doctor]') {
       this.isAdmin = false;
       this.isDoctor = true;
     }
