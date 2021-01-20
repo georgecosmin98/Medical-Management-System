@@ -17,7 +17,7 @@ import javax.persistence.Table;
 public class AdminEntity extends  PersonEntity{
 
     @Builder
-    public AdminEntity(String id, String fullName, String phoneNumber, String emailAddress) {
-        super(id, fullName, phoneNumber, emailAddress);
+    public AdminEntity(String id, String fullName, String phoneNumber, String emailAddress,String cnp) {
+        super(id, fullName, phoneNumber, emailAddress,cnp);
     }
 }

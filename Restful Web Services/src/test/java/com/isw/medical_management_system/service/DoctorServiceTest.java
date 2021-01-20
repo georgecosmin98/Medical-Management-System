@@ -29,8 +29,8 @@ public class DoctorServiceTest {
 
     @Before
     public void setUp(){
-        firstDoctor = new DoctorEntity("1", "myName", "myEmail", "myNumber", "myDep", "mySpec", 2000);
-        secondDoctor = new DoctorEntity("2", "myName1", "myEmail1", "myNumber1", "myDep1", "mySpec1", 3000);
+        firstDoctor = new DoctorEntity("1", "myName", "myEmail","1234", "myNumber", "myDep", "mySpec", 2000);
+        secondDoctor = new DoctorEntity("2", "myName1", "myEmail1","1234", "myNumber1", "myDep1", "mySpec1", 3000);
     }
 
     @Test

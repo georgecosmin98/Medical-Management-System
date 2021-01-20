@@ -17,8 +17,8 @@ public class DoctorEntity extends PersonEntity{
     private int salary;
 
     @Builder
-    public DoctorEntity (String id, String fullName, String emailAddress, String phoneNumber, String department, String specialization, int salary){
-        super(id,fullName,phoneNumber,emailAddress);
+    public DoctorEntity (String id, String fullName, String emailAddress,String cnp, String phoneNumber, String department, String specialization, int salary){
+        super(id,fullName,phoneNumber,emailAddress,cnp);
         this.department = department;
         this.specialization = specialization;
         this.salary = salary;

@@ -25,8 +25,8 @@ public class PatientEntity extends PersonEntity {
     //private List<PrescriptionEntity> prescription;
     private String prescription;
     @Builder
-    public PatientEntity(String id, String fullName, String phoneNumber, String emailAddress, String address, int age, String sex, String prescription) {
-        super(id, fullName, phoneNumber, emailAddress);
+    public PatientEntity(String id, String fullName, String phoneNumber, String emailAddress,String cnp, String address, int age, String sex, String prescription) {
+        super(id, fullName, phoneNumber, emailAddress,cnp);
         this.address = address;
         this.age = age;
         this.sex = sex;
