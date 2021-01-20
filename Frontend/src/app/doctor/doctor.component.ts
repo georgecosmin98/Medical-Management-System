@@ -51,12 +51,14 @@ export class DoctorComponent implements OnInit {
 
 
   isLoggedIn = false;
+  role = 'administrator';
   isLoginFailed = false;
   errorMessage = '';
   roles: string[] = [];
 
 
-
+  isAdmin = false;
+  isDoctor = false;
 
 
 

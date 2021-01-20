@@ -14,6 +14,7 @@
 
 
 
+<div *ngIf="currentUser; else role">
 <div *ngIf="currentUser; else loggedOut">
   <div class="active-pink-3 active-pink-4 mb-4">
     <mat-form-field>
@@ -129,7 +130,10 @@
     <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
   </div>
 </div>
+</div>
+
 
 <ng-template #loggedOut>
   Please login.
 </ng-template>
+

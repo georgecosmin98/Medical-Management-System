@@ -19,6 +19,8 @@ var LoginComponent = /** @class */ (function () {
         this.isLoginFailed = false;
         this.errorMessage = '';
         this.roles = [];
+        this.isAdmin = false;
+        this.isDoctor = false;
     }
     LoginComponent.prototype.ngOnInit = function () {
         if (this.tokenStorage.getToken()) {

@@ -14,9 +14,23 @@ var AppComponent = /** @class */ (function () {
         this.isLoggedIn = false;
         this.showAdminBoard = false;
         this.showModeratorBoard = false;
+        this.isAdmin = false;
+        this.isDoctor = false;
     }
+    AppComponent.prototype.title = function (title) {
+        throw new Error('Method not implemented.');
+    };
     AppComponent.prototype.ngOnInit = function () {
         this.isLoggedIn = !!this.tokenStorageService.getToken();
+        console.log(this.tokenStorageService.getUser().role);
+        if (this.tokenStorageService.getUser().role == 'administrator') {
+            this.isAdmin = true;
+            this.isDoctor = false;
+        }
+        else if (this.tokenStorageService.getUser().role == 'doctor') {
+            this.isAdmin = false;
+            this.isDoctor = true;
+        }
     };
     AppComponent.prototype.logout = function () {
         this.tokenStorageService.signOut();

@@ -14,16 +14,18 @@ export class LoginComponent implements OnInit {
   isLoginFailed = false;
   errorMessage = '';
   roles: string[] = [];
+  isAdmin = false;
+  isDoctor = false;
 
-  constructor(private route: ActivatedRoute,private router: Router, private authService : AuthService, private tokenStorage: TokenStorageService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private authService: AuthService, private tokenStorage: TokenStorageService) { }
 
-  ngOnInit(){
+  ngOnInit() {
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
       this.roles = this.tokenStorage.getUser().roles;
     }
   }
-  
+
 
   onSubmit() {
     this.authService.login(this.form).subscribe(
@@ -34,14 +36,14 @@ export class LoginComponent implements OnInit {
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser().roles;
-        
-        if(this.isLoggedIn){
+
+        if (this.isLoggedIn) {
           // this.router.navigate(['/home'])
           // location.reload();
           window.alert("You was successfully log-in!");
           window.location.reload();
         }
-      
+
       },
       err => {
         this.errorMessage = err.error.message;
@@ -49,7 +51,7 @@ export class LoginComponent implements OnInit {
       }
     );
   }
-  
+
 
   // reloadPage() {
   //   window.location.reload();

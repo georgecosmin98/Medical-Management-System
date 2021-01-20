@@ -34,9 +34,12 @@ var DoctorComponent = /** @class */ (function () {
             salary: ''
         };
         this.isLoggedIn = false;
+        this.role = 'administrator';
         this.isLoginFailed = false;
         this.errorMessage = '';
         this.roles = [];
+        this.isAdmin = false;
+        this.isDoctor = false;
     }
     DoctorComponent.prototype.ngOnInit = function () {
         var _this = this;
