@@ -2,6 +2,7 @@ package com.isw.medical_management_system.controller;
 
 import com.isw.medical_management_system.model.DoctorEntity;
 import com.isw.medical_management_system.model.PatientEntity;
+import com.isw.medical_management_system.repository.PatientRepository;
 import com.isw.medical_management_system.service.PatientService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -17,10 +18,18 @@ public class PatientController {
     @Resource
     private PatientService patientService;
 
+    @Resource
+    private PatientRepository patientRepository;
+
     @PostMapping("/addPatient")
     @ResponseStatus(HttpStatus.CREATED)
-    public PatientEntity addPatient(@RequestBody PatientEntity patientEntity) {
-        return patientService.addPatient(patientEntity);
+    @ResponseBody
+    public HttpStatus addPatient(@RequestBody PatientEntity patientEntity) {
+        if(!patientRepository.existsByCNP(patientEntity.getCNP())) {
+            patientRepository.save(patientEntity);
+            return HttpStatus.CREATED;
+        }
+        return HttpStatus.CONFLICT;
     }
 
     @GetMapping("/listOfPatient")

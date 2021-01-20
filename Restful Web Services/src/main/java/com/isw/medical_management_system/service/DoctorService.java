@@ -42,9 +42,6 @@ public class DoctorService {
         return null;
     }
 
-//    String id, String fullName, String emailAddress, String phoneNumber, String department, String specialization, int salary
-
-
     public DoctorEntity update(String id, DoctorEntity doctorEntity) {
         List<DoctorEntity> idSearch = doctorRepository.findAllById(id);
         DoctorEntity search = idSearch.get(0);
@@ -54,7 +51,7 @@ public class DoctorService {
         search.setDepartment(doctorEntity.getDepartment());
         search.setSpecialization(doctorEntity.getSpecialization());
         search.setSalary(doctorEntity.getSalary());
-        
+        search.setCNP(doctorEntity.getCNP());
         search = doctorRepository.save(search);
 
         return search;

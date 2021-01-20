@@ -10,7 +10,7 @@ import java.util.List;
 public interface PatientRepository extends JpaRepository<PatientEntity, String> {
 
     List<PatientEntity> findAllById(String id);
-
+    boolean existsByCNP(String cnp);
     @Transactional
     void deleteById(String id);
 }
