@@ -33,4 +33,37 @@ public class PatientEntity extends PersonEntity {
         this.prescription=prescription;
     }
 
+
+    public String getAddress() {
+        return address;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public String getPrescription() {
+        return prescription;
+    }
+
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public void setPrescription(String prescription) {
+        this.prescription = prescription;
+    }
 }

@@ -56,10 +56,8 @@ public class DoctorService {
         search.setSalary(doctorEntity.getSalary());
         
         search = doctorRepository.save(search);
-//        doctorRepository.deleteById(id);
 
         return search;
-
 
     }
 }
