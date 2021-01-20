@@ -1,4 +1,4 @@
-<div class="container" *ngIf="currentUser; else loggedOut">
+<div *ngIf="currentUser; else loggedOut">
     <div class="active-pink-3 active-pink-4 mb-4">
       <mat-form-field>
         <mat-label></mat-label>
@@ -44,6 +44,21 @@
           <td mat-footer-cell *matFooterCellDef></td>
         </ng-container>
   
+
+        <ng-container matColumnDef="cnp">
+          <th mat-header-cell *matHeaderCellDef>cnp 
+            <div>
+              <mat-form-field>
+                <input matInput class="form-field" type="text" #myInput [(ngModel)]="cnp1" (input)="searchCNP()"
+                  placeholder="Search CNP">
+                <br />
+              </mat-form-field>
+            </div>  
+          </th>
+          <td mat-cell *matCellDef="let element"> {{element.cnp}} </td>
+          <td mat-footer-cell *matFooterCellDef></td>
+        </ng-container>
+
         <!-- Name Column -->
         <ng-container matColumnDef="phoneNumber">
           <th mat-header-cell *matHeaderCellDef>phoneNumber </th>

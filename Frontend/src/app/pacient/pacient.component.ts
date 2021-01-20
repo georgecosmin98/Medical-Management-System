@@ -23,7 +23,7 @@ export class PacientComponent implements OnInit {
 
 
   form: any = {};
-  displayedColumns: string[] = ['id', 'fullName', 'phoneNumber', 'emailAddress', 'address', 'age', 'sex', 'prescription', 'delete', 'update'];
+  displayedColumns: string[] = ['id', 'fullName', 'cnp', 'phoneNumber', 'emailAddress', 'address', 'age', 'sex', 'prescription', 'delete', 'update'];
   values: PeriodicElement[];
   dataSource: MatTableDataSource<PeriodicElement>;
   currentUser: any;
@@ -31,12 +31,14 @@ export class PacientComponent implements OnInit {
   name: any;
   name1: string;
   confirm: any;
+  cnp1: string;
 
 
 
 
   public user = {
     fullName: '',
+    cnp: '',
     phoneNumber: '',
     emailAddress: '',
     address: '',
@@ -104,6 +106,22 @@ export class PacientComponent implements OnInit {
 
   }
 
+  searchCNP() {
+    this.dataSource = new MatTableDataSource(this.rows)
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+
+    if (this.cnp1 != "") {
+      this.rows = this.rows.filter(res => {
+        return res.cnp.toLocaleLowerCase().match(this.cnp1.toLocaleLowerCase());
+      });
+
+    } else if (this.cnp1 == "") {
+      this.ngOnInit();
+    }
+
+  }
+
 
 
 
@@ -164,6 +182,7 @@ export class PacientComponent implements OnInit {
 export interface PeriodicElement {
   id?: string;
   fullName?: string;
+  CNP?: string;
   phoneNumber?: string;
   emailAdress?: string;
   address?: string;

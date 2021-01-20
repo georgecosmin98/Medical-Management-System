@@ -23,9 +23,10 @@ var DoctorComponent = /** @class */ (function () {
         this.modalService = modalService;
         this.token = token;
         this.form = {};
-        this.displayedColumns = ['id', 'fullName', 'emailAddress', 'phoneNumber', 'department', 'specialization', 'salary', 'delete', 'update'];
+        this.displayedColumns = ['id', 'fullName', 'cnp', 'emailAddress', 'phoneNumber', 'department', 'specialization', 'salary', 'delete', 'update'];
         this.user = {
             fullName: '',
+            cnp: '',
             emailAddress: '',
             phoneNumber: '',
             department: '',
@@ -80,6 +81,20 @@ var DoctorComponent = /** @class */ (function () {
             });
         }
         else if (this.name1 == "") {
+            this.ngOnInit();
+        }
+    };
+    DoctorComponent.prototype.searchCNP = function () {
+        var _this = this;
+        this.dataSource = new table_1.MatTableDataSource(this.rows);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+        if (this.cnp1 != "") {
+            this.rows = this.rows.filter(function (res) {
+                return res.cnp.toLocaleLowerCase().match(_this.cnp1.toLocaleLowerCase());
+            });
+        }
+        else if (this.cnp1 == "") {
             this.ngOnInit();
         }
     };

@@ -1,6 +1,7 @@
 export interface PacientEntity { 
     id?: string;
     fullName?: string;
+    CNP?: string
     phoneNumber?: string;
     emailAdress?: string;
     address?: string;

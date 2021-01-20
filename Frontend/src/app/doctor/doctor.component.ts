@@ -23,7 +23,7 @@ export class DoctorComponent implements OnInit {
 
 
   form: any = {};
-  displayedColumns: string[] = ['id', 'fullName', 'emailAddress', 'phoneNumber', 'department', 'specialization', 'salary', 'delete', 'update'];
+  displayedColumns: string[] = ['id', 'fullName', 'cnp', 'emailAddress', 'phoneNumber', 'department', 'specialization', 'salary', 'delete', 'update'];
   values: PeriodicElement[];
   dataSource: MatTableDataSource<PeriodicElement>;
   currentUser: any;
@@ -31,12 +31,15 @@ export class DoctorComponent implements OnInit {
   name: any;
   name1: string;
   confirm: any;
+  cnp1: string;
+  
 
 
 
 
   public user = {
     fullName: '',
+    cnp: '',
     emailAddress: '',
     phoneNumber: '',
     department: '',
@@ -130,6 +133,24 @@ export class DoctorComponent implements OnInit {
 
   }
 
+
+  searchCNP() {
+    this.dataSource = new MatTableDataSource(this.rows)
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+
+    if (this.cnp1 != "") {
+      this.rows = this.rows.filter(res => {
+        return res.cnp.toLocaleLowerCase().match(this.cnp1.toLocaleLowerCase());
+      });
+
+    } else if (this.cnp1 == "") {
+      this.ngOnInit();
+    }
+
+  }
+
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -199,6 +220,7 @@ export class DoctorComponent implements OnInit {
 export interface PeriodicElement {
   id?: string;
   fullName?: string;
+  cnp?: string;
   emailAdress?: string;
   phoneNumber?: string;
   department?: string;
